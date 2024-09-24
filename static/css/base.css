@@ -6,6 +6,10 @@ body {
 }
 
 /* Estilo do cabeçalho */
+        a {
+            color: #4b4b4b;
+            text-decoration: none;
+        }
 header {
     background-color: #252525;
     padding: 10px 20px;
@@ -70,37 +74,132 @@ header img {
     border: 2px solid white;
 }
 
+/* estilo do rodapé */
+
+/* Redes sociais */
+li {
+    text-decoration: none;
+    font-size: 22px;
+    display: flex; /* Exibe o texto e a imagem lado a lado */
+    align-items: center; /* Alinha verticalmente a imagem com o texto */
+    color: #ffffff;
+    list-style-type: none; /* Remove os marcadores das listas */
+    margin-bottom: 10px; /* Adiciona espaço entre os itens da lista */
+}
+
+#redes-sociais img {
+    width: auto;
+    height: 1em;
+    margin-right: 10px;
+}
+
+footer ul {
+    padding: 10px;
+}
+
+footer {
+    background-color: #252525;
+    padding: 10px 20px 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+#mapa-site img {
+    width: auto;
+    height: 80px;
+}
+
 /* Media Queries para telas menores */
-@media (max-width: 780px) {
-    #nav-menu {
+
+@media (max-width: 950px) {
+    footer {
         display: grid;
         grid-template-columns: repeat(2, 1fr); /* Grid 2x2 */
-        gap: 5px; /* Reduzi o espaçamento entre colunas */
+        gap: 0; /* Reduzi o espaçamento entre colunas */
+        padding: 10px;
         width: 100%;
         justify-items: center;
     }
-
-    .button {
+    li {
+        display: block; /* Faz com que cada li ocupe 100% da largura */
+        text-align: center; /* Centraliza o conteúdo */
         width: 100%;
-        font-size: 15px;
-        padding: 7px;
+        color: #ffffff;
+        text-decoration: none;
+        list-style-type: none; /* Remove os marcadores das listas */
+        margin-bottom: 10px; /* Adiciona espaço entre os itens da lista */
     }
+            a {
+            color: #4b4b4b;
+            text-decoration: none;
+        }
+
+}
+
+@media (max-width: 780px) {
+
+    footer {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr); /* Grid 2x2 */
+        gap: 10px; /* Reduzi o espaçamento entre colunas */
+        width: 100%;
+        justify-items: center;
+    }
+    footer h3 {
+        text-align: center;
+    }
+
+    #redes-sociais {
+        display: block; /* Força o contêiner a se comportar em bloco */
+        width: 100%;
+    }
+
+    li {
+        display: block; /* Faz com que cada li ocupe 100% da largura */
+        text-align: center; /* Centraliza o conteúdo */
+        width: 100%;
+        color: #ffffff;
+        text-decoration: none;
+        list-style-type: none; /* Remove os marcadores das listas */
+        margin-bottom: 10px; /* Adiciona espaço entre os itens da lista */
+    }
+
+    #redes-sociais img {
+        margin-right: 0; /* Remove o espaço à direita da imagem */
+        margin-bottom: 5px; /* Adiciona um espaço entre a imagem e o texto */
+    }
+            a {
+            color: #4b4b4b;
+            text-decoration: none;
+        }
 }
 
 @media (max-width: 470px) {
-    #nav-menu a {
-        font-size: 14px;
+    #redes-sociais {
+        display: block;
+        width: 100%;
     }
 
-    header img {
-        height: 45px;
-    }
-    .button {
+    li {
+        display: block; /* Faz com que cada li ocupe 100% da largura */
+        text-align: center; /* Centraliza o conteúdo */
         width: 100%;
-        font-size: 13px;
-        padding: 4px;
-        margin: 3px;
+        color: #ffffff;
+        text-decoration: none;
+        list-style-type: none; /* Remove os marcadores das listas */
+        margin-bottom: 10px; /* Adiciona espaço entre os itens da lista */
     }
+
+    #redes-sociais img {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+            a {
+            color: #4b4b4b;
+            text-decoration: none;
+        }
 }
 
 @media (max-width: 380px) {
@@ -120,4 +219,18 @@ header img {
     header img {
         height: 40px;
     }
+        li {
+        display: block; /* Faz com que cada li ocupe 100% da largura */
+        text-align: center; /* Centraliza o conteúdo */
+        width: 100%;
+        color: #ffffff;
+        text-decoration: none;
+        list-style-type: none; /* Remove os marcadores das listas */
+        margin-bottom: 10px; /* Adiciona espaço entre os itens da lista */
+    }
+        a {
+            color: #4b4b4b;
+            text-decoration: none;
+        }
 }
+
