@@ -1,13 +1,27 @@
+/* Variáveis globais */
+:root {
+    --primary-bg-color: #353535;
+    --secondary-bg-color: #252525;
+    --button-bg-color: #505050;
+    --hover-color: #2d8ef1;
+    --text-color: #ffffff;
+    --font-size-large: 20px;
+    --font-size-medium: 15px;
+    --font-size-small: 10px;
+    --font-size-extra-small: 14px;
+}
+
+/* Estilo geral */
 body {
-    background-color: #353535;
+    background-color: var(--primary-bg-color);
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
 
-/* Estilo do cabeçalho */
+/* ================= HEADER ================= */
 header {
-    background-color: #252525;
+    background-color: var(--secondary-bg-color);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -15,42 +29,44 @@ header {
 }
 
 header img {
-    height: 60px;
+    height: 60px; /* Altura da logo no cabeçalho */
 }
 
+/* Menu de navegação */
 #nav-menu {
     display: flex;
-    min-width: 120px;
-    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    min-width: 120px;
 }
 
 #nav-menu a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
-    font-size: 20px;
+    font-size: var(--font-size-large);
     font-weight: bold;
     margin: 0 10px;
     transition: color 300ms;
 }
 
 #nav-menu a:hover {
-    color: #2d8ef1;
+    color: var(--hover-color);
 }
 
+/* Botões de login/inscrição */
 #nav-buttons {
     display: flex;
     flex-wrap: wrap;
-    font-size: 15px;
+    font-size: var(--font-size-medium);
     gap: 10px;
 }
 
 .button {
     text-align: center;
     width: 90px;
-    background-color: #505050;
-    color: #ffffff;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
     border: 2px solid white;
     padding: 7px 20px;
     border-radius: 20px;
@@ -61,33 +77,22 @@ header img {
 }
 
 .button:hover {
-    background-color: #2d8ef1;
+    background-color: var(--hover-color);
 }
 
-/* rodapé */
-
-/* Redes sociais */
-li {
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    color: #ffffff;
-    list-style-type: none;
-    margin-bottom: 10px;
-}
-
-#redes-sociais img {
-    height: 1em;
-    margin-right: 10px;
-}
-
+/* ================= FOOTER ================= */
 footer {
-    background-color: #252525;
+    background-color: var(--secondary-bg-color);
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: white;
+    color: var(--text-color);
+}
+
+/* Redes sociais */
+#redes-sociais {
+    text-align: center;
 }
 
 footer ul {
@@ -101,10 +106,24 @@ footer ul {
 #redes-sociais li a {
     text-decoration: none;
     text-align: center;
-    color: white;
+    color: var(--text-color);
 }
 
-/* Media Queries para telas menores */
+#redes-sociais img {
+    height: 1em;
+    margin-right: 10px;
+}
+
+li {
+    font-size: 22px;
+    color: var(--text-color);
+    list-style-type: none;
+    margin-bottom: 10px;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+/* Tela até 950px */
 @media (max-width: 950px) {
     footer {
         display: grid;
@@ -120,6 +139,7 @@ footer ul {
     }
 }
 
+/* Tela até 780px */
 @media (max-width: 780px) {
     footer {
         grid-template-columns: repeat(1, 1fr);
@@ -134,7 +154,6 @@ footer ul {
     }
 
     #redes-sociais {
-        display: block;
         width: 100%;
     }
 
@@ -147,7 +166,6 @@ footer ul {
     }
 
     #redes-sociais li {
-        align-content: center;
         width: 100%;
     }
 
@@ -156,24 +174,20 @@ footer ul {
     }
 }
 
+/* Tela até 480px */
 @media (max-width: 480px) {
-    #redes-sociais {
-        display: block;
-        width: 100%;
-    }
-
     #nav-menu a {
-        font-size: 15px;
+        font-size: var(--font-size-extra-small);
     }
 
     .button {
         width: 100%;
-        font-size: 14px;
+        font-size: var(--font-size-extra-small);
         padding: 6px;
         margin: 2px;
     }
 
-    li{
+    li {
         width: 100%;
     }
 
@@ -182,13 +196,14 @@ footer ul {
     }
 }
 
+/* Tela até 380px */
 @media (max-width: 380px) {
     #nav-menu a {
-        font-size: 10px;
+        font-size: var(--font-size-small);
     }
 
     .button {
-        font-size: 10px;
+        font-size: var(--font-size-small);
         padding: 4px;
         margin: 2px;
     }
@@ -201,4 +216,9 @@ footer ul {
         text-align: center;
         width: 100%;
     }
+
+    #copyright p {
+        font-size: var(--font-size-small);
+    }
+
 }
