@@ -235,5 +235,14 @@ li {
     #copyright p {
         font-size: var(--font-size-small);
     }
+}
+
+@media (max-width: 319px) {
+
+    #nav-menu {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        min-width: 70px;
+    }
 
 }
