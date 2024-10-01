@@ -116,6 +116,7 @@ footer ul {
 #redes-sociais img {
     height: 1em;
     margin-right: 10px;
+    vertical-align: middle;
 }
 
 li {

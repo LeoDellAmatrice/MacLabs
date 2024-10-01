@@ -1,10 +1,27 @@
 {% extends 'base.html' %}
 
 {% block title %}
-MacLabs Inicio
+MacLabs-Inscrição
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/inscricao.css') }}">
 {% endblock %}
 
 {% block content %}
-<h2>Bem-vindo à página para increver-se!</h2>
-<p>Este é o conteúdo da página.</p>
+    <div class="login-container">
+        <form action="{{ url_for('inscricao') }}" method="POST" class="formInscricao">
+            <h1>Inscrição</h1>
+            <p>Digite os seus dados para cadastro no campo abaixo.</p>
+            <label for="usuario">E-mail</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário"/><br>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" /><br>
+            <!--
+            <label for ="file">Selecione uma imagem de perfil</label>
+            <input type="file" id="file" name="file" accept=".png">
+            -->
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 {% endblock %}

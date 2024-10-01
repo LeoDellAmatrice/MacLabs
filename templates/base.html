@@ -6,13 +6,14 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}">
+    {% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">{% endblock css %}
     <title>{% block title %}MacLabs{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body>
     <header>
         <!-- Logo -->
-        <a href="/">
+        <a href="{{ url_for('index') }}">
             <img id="img-logo" src="{{url_for('static', filename='img/logo1.svg')}}" alt="Logo MacLabs">
         </a>
         <!-- Menu de navegação -->

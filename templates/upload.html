@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MacLabs-Inscrição
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <h2>Upload</h2>
+            <p>Faça upload de um arquivo .txt para atualizar o catalogo</p>
+            <input type="file" name="file" accept=".txt">
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
+{% endblock %}

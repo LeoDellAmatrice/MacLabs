@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
 
 {% block title %}
-MacLabs Inicio
+MacLabs-Login
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
 {% endblock %}
 
 {% block content %}
-<h2>Bem-vindo à página de login!</h2>
-<p>Este é o conteúdo da página de login.</p>
+    <div class="login-container">
+        <form action="{{ url_for('login') }}" method="POST" class="formLogin">
+            <h1>Login</h1>
+            <p>Digite os seus dados de acesso no campo abaixo.</p>
+            <label for="usuario">Usuário</label>
+            <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário"/><br>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder="Digite sua senha" /><br>
+            <button type="submit">Entrar</button>
+        </form>
+    </div>
 {% endblock %}
