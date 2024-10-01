@@ -13,14 +13,14 @@
     <header>
         <!-- Logo -->
         <a href="/">
-            <img src="{{url_for('static', filename='img/logo1.svg')}}" alt="Logo MacLabs">
+            <img id="img-logo" src="{{url_for('static', filename='img/logo1.svg')}}" alt="Logo MacLabs">
         </a>
         <!-- Menu de navegação -->
         <nav id="nav-menu">
-            <a href="/produtos">Produtos</a>
-            <a href="/criar">Criar</a>
-            <a href="/contato">Contato</a>
-            <a href="/sobre">Sobre</a>
+            <a href="{{ url_for('produtos') }}">Produtos</a>
+            <a href="{{ url_for('criar') }}">Criar</a>
+            <a href="{{ url_for('contato') }}">Contato</a>
+            <a href="{{ url_for('sobre') }}">Sobre</a>
         </nav>
         <!-- Botões de login/inscrição -->
         <div id="nav-buttons">

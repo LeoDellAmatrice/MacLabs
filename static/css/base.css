@@ -8,7 +8,7 @@
     --font-size-large: 20px;
     --font-size-medium: 15px;
     --font-size-small: 10px;
-    --font-size-extra-small: 14px;
+    --font-size-extra-small: 12px;
 }
 
 /* Estilo geral */
@@ -46,7 +46,7 @@ header img {
     text-decoration: none;
     font-size: var(--font-size-large);
     font-weight: bold;
-    margin: 0 10px;
+    margin: 0 10px 8px 10px;
     transition: color 300ms;
 }
 
@@ -93,6 +93,10 @@ footer {
 /* Redes sociais */
 #redes-sociais {
     text-align: center;
+}
+
+#redes-sociais img {
+    align-items: center;
 }
 
 footer ul {
@@ -176,14 +180,20 @@ li {
 
 /* Tela até 480px */
 @media (max-width: 480px) {
+
+    header {
+        padding: 5px 10px;
+    }
+
     #nav-menu a {
         font-size: var(--font-size-extra-small);
     }
 
     .button {
-        width: 100%;
         font-size: var(--font-size-extra-small);
-        padding: 6px;
+        min-width: 75px;
+        width: 110%;
+        padding: 8px;
         margin: 2px;
     }
 
@@ -193,6 +203,10 @@ li {
 
     #redes-sociais li a {
         text-align: center;
+    }
+
+    header #img-logo {
+        height: 50px
     }
 }
 
@@ -204,12 +218,13 @@ li {
 
     .button {
         font-size: var(--font-size-small);
+        min-width: 75px;
         padding: 4px;
         margin: 2px;
     }
 
     header img {
-        height: 40px;
+        height: 30px;
     }
 
     li {
