@@ -1,0 +1,101 @@
+:root {
+    --primary-bg-color: #353535;
+    --secondary-bg-color: #252525;
+    --button-bg-color: #505050;
+    --hover-color: #2d8ef1;
+    --text-color: #ffffff;
+    --input-bg-color: #454545;
+    --input-border-color: #808080;
+    --font-size-large: 20px;
+    --font-size-medium: 15px;
+    --font-size-small: 10px;
+    --font-size-extra-small: 12px;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.formInscricao {
+    background-color: var(--secondary-bg-color);
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 100%;
+}
+
+.formInscricao h1 {
+    font-size: var(--font-size-large);
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.formInscricao p {
+    font-size: var(--font-size-medium);
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.formInscricao label {
+    font-size: var(--font-size-medium);
+    color: white;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.formInscricao input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: var(--input-bg-color);
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    color: var(--text-color);
+    font-size: var(--font-size-medium);
+    box-sizing: border-box;
+}
+
+.formInscricao input::placeholder {
+    color: var(--input-border-color);
+}
+
+.formInscricao button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+    transition: background-color 300ms;
+}
+
+.formInscricao button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .formInscricao {
+        padding: 20px;
+    }
+
+    .formInscricao h1 {
+        font-size: var(--font-size-medium);
+    }
+
+    .formInscricao p {
+        font-size: var(--font-size-small);
+    }
+
+    .formInscricao button {
+        font-size: var(--font-size-small);
+    }
+}

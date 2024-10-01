@@ -1,6 +1,7 @@
 from flask import Flask, redirect, url_for, render_template, request
 import os
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = '/uploads'
 
 
 @app.route('/')
