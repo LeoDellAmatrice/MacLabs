@@ -73,11 +73,11 @@ header img {
     font-weight: bold;
     margin: 3px;
     text-decoration: none;
-    transition: background-color 300ms;
+    transition: 0.5s;
 }
 
 .button:hover {
-    background-color: var(--hover-color);
+    background: var(--hover-color);
 }
 
 /* ================= FOOTER ================= */

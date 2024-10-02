@@ -28,10 +28,24 @@
     width: 100%;
 }
 
-.formInscricao h1 {
-    font-size: var(--font-size-large);
-    color: white;
+#titulo {
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#titulo img {
+    width: 50px;
+    transition: transform 2s ease;
+}
+
+#titulo img:hover {
+    transform: rotate(180deg);
+}
+
+.formInscricao h1 {
+    font-size: 30px;
+    color: white;
     text-align: center;
 }
 
@@ -89,6 +103,10 @@
 
     .formInscricao h1 {
         font-size: var(--font-size-medium);
+    }
+
+    #titulo img {
+        width: 30px;
     }
 
     .formInscricao p {
