@@ -1,5 +1,4 @@
 :root {
-    color-scheme: light;
     --primary-bg-color: #353535;
     --secondary-bg-color: #252525;
     --button-bg-color: #505050;
@@ -11,6 +10,13 @@
     --font-size-medium: 15px;
     --font-size-small: 10px;
     --font-size-extra-small: 12px;
+}
+
+html {
+    /* Previne o navegador de aplicar o modo escuro forçado */
+    -webkit-filter: none !important;
+    filter: none !important;
+    -webkit-overflow-scrolling: touch;
 }
 
 .login-container {
