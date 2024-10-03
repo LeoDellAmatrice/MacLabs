@@ -95,6 +95,13 @@ footer {
     color: var(--text-color);
 }
 
+/* Contatos */
+#contato li a, h3 {
+    text-decoration: none;
+    text-align: center;
+    color: var(--text-color);
+}
+
 /* Redes sociais */
 #redes-sociais {
     text-align: center;
@@ -112,7 +119,7 @@ footer ul {
     height: 80px;
 }
 
-#redes-sociais li a {
+#redes-sociais li, a, h3, ul {
     text-decoration: none;
     text-align: center;
     color: var(--text-color);
