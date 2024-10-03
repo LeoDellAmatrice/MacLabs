@@ -10,6 +10,8 @@
     --font-size-medium: 15px;
     --font-size-small: 10px;
     --font-size-extra-small: 12px;
+
+    color-scheme: dark;
 }
 
 html {
