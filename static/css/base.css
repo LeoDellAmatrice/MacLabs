@@ -13,18 +13,14 @@
     color-scheme: dark;
 }
 
-html, body {
-    /* Força o fundo e a cor do texto */
+html {
     background-color: var(--primary-bg-color) !important;
     color: var(--text-color) !important;
-    /* Desabilita qualquer ajuste automático de cor */
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
 }
 
-html {
-    -webkit-filter: none !important;
-    filter: none !important;
+body {
+    background-color: var(--primary-bg-color) !important;
+    color: var(--text-color) !important;
 }
 
 /* Estilo geral */
@@ -262,4 +258,11 @@ li {
         min-width: 70px;
     }
 
+}
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        background-color: var(--primary-bg-color) !important;
+        color: var(--text-color) !important;
+    }
 }
