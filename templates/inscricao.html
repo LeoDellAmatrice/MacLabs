@@ -12,9 +12,9 @@ MacLabs Inscrição
     <div class="login-container">
         <form action="{{ url_for('inscricao') }}" method="POST" class="formInscricao">
             <div id="titulo">
-                <img src="{{ url_for('static', filename='img/eng_azul.svg') }}" alt="Engrenagem Azul">
+                <img class="gear" src="{{ url_for('static', filename='img/eng_azul.svg') }}" alt="Engrenagem Azul">
                 <h1>Inscrição</h1>
-                <img src="{{ url_for('static', filename='img/eng_vermelha.svg') }}" alt="Engrenagem Vermelha">
+                <img class="gear" src="{{ url_for('static', filename='img/eng_vermelha.svg') }}" alt="Engrenagem Vermelha">
             </div>
             <p>Digite os seus dados para cadastro no campo abaixo.</p>
             <label for="usuario">E-mail</label>
@@ -28,4 +28,8 @@ MacLabs Inscrição
             <button type="submit">Cadastrar</button>
         </form>
     </div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

@@ -4,7 +4,61 @@
 MacLabs Produtos
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
+{% endblock %}
+
 {% block content %}
-<h2>Bem-vindo à página de Produtos!</h2>
-<p>Este é o conteúdo da página De produtos.</p>
+<div id="barra_pesquisa">
+
+</div>
+<section class="products-section">
+    <div class="products-header">
+        <h1>Nossos Produtos</h1>
+        <p>Descubra itens impressos em 3D com precisão e qualidade.</p>
+    </div>
+    <div class="products-container">
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 1">
+            <h2>Prato para vaso</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 2">
+            <h2>Produto 2</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <button>Saiba Mais</button>
+        </div>
+        <div class="product-card">
+            <img src="{{ url_for('static', filename='img/produtos/Pote_flor.svg') }}" alt="Produto 3">
+            <h2>Produto 3</h2>
+            <a href="{{ url_for('criar') }}"><button>Saiba Mais</button></a>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

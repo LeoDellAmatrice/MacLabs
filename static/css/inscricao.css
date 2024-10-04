@@ -34,13 +34,22 @@
     justify-content: space-evenly;
 }
 
-#titulo img {
+.gear {
     width: 50px;
-    transition: transform 2s ease;
+    transition: transform 0.5s ease;
 }
 
-#titulo img:hover {
-    transform: rotate(180deg);
+@keyframes rotate-once {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotate {
+    animation: rotate-once 2s ease forwards;
 }
 
 .formInscricao h1 {
