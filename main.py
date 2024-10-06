@@ -19,6 +19,7 @@ def upload():
         file.save(caminho)
         return render_template("produtos.html")
 
+
 @app.route('/sobre')
 def sobre():
     return render_template('sobre.html')
@@ -31,7 +32,26 @@ def criar():
 
 @app.route('/produtos')
 def produtos():
-    return render_template('produtos.html')
+    lista_produtos = [
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'}
+        # Adicione mais produtos conforme necessário
+    ]
+
+    return render_template('produtos.html', produtos=lista_produtos)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -48,6 +68,7 @@ def login():
 
         return render_template("login.html")
 
+
 @app.route('/inscricao')
 def inscricao():
     return render_template('inscricao.html')
@@ -55,4 +76,3 @@ def inscricao():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
