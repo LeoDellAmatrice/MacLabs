@@ -33,19 +33,19 @@ def criar():
 @app.route('/produtos')
 def produtos():
     lista_produtos = [
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/Pote_flor.svg'},
         {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
         {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/Pote_flor.svg'},
         {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
         {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/Pote_flor.svg'},
         {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
         {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/Pote_flor.svg'},
         {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
         {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/Pote_flor.svg'},
         {'nome': 'caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
         {'nome': 'caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'}
         # Adicione mais produtos conforme necessário
