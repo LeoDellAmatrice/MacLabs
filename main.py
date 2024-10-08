@@ -40,7 +40,7 @@ def produtos():
         {'nome': 'Funil', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/funil.png'},
         {'nome': 'Garfo', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/garfo.png'},
         {'nome': 'Mesas e cadeiras', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/mesas_cadeiras.png'},
-        {'nome': 'Porta lápis', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/Porta_lapis.png'},
+        {'nome': 'Porta lápis', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/porta_lapis.png'},
         {'nome': 'shuriken', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/shuriken.png'},
         # Adicione mais produtos conforme necessário
     ]
