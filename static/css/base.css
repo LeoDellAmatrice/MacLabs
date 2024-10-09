@@ -110,9 +110,17 @@ footer {
     color: var(--text-color);
 }
 
+#contato h3{
+    font-size: var(--font-size-large);
+}
+
 /* Redes sociais */
 #redes-sociais {
     text-align: center;
+}
+
+#redes-sociais h3{
+    font-size: var(--font-size-large);
 }
 
 #redes-sociais img {
@@ -140,12 +148,15 @@ footer ul {
 }
 
 li {
-    font-size: 22px;
+    font-size: 25px;
     color: var(--text-color);
     list-style-type: none;
     margin-bottom: 10px;
 }
 
+#copyright {
+    font-size: 20px;
+}
 /* ================= MEDIA QUERIES ================= */
 
 /* Tela até 950px */
