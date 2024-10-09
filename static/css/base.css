@@ -5,14 +5,22 @@
     --button-bg-color: #505050;
     --hover-color: #2d8ef1;
     --text-color: #ffffff;
-    --font-size-large: 20px;
-    --font-size-medium: 15px;
-    --font-size-small: 10px;
-    --font-size-extra-small: 12px;
+    --font-size-large: 22px;
+    --font-size-medium: 17px;
+    --font-size-small: 12px;
+    --font-size-extra-small: 14px;
 
 }
-/* Estilo geral */
 
+@font-face {
+    font-family: "barlow";
+    src: url("../fonts/Barlow_Condensed/BarlowCondensed-Thin.ttf") format("truetype");
+}
+
+/* Estilo geral */
+h1, p, h2, h3, li {
+    font-family: "barlow", serif;
+}
 html {
     scroll-behavior: smooth;
 }
@@ -21,7 +29,7 @@ body {
     background-color: var(--primary-bg-color);
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: barlow, sans-serif;
 }
 
 /* ================= HEADER ================= */

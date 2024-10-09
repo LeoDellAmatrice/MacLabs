@@ -10,13 +10,13 @@
 .sobre-container h1 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 .sobre-container p {
     text-align: center;
     line-height: 1.6;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
@@ -28,35 +28,25 @@
 }
 
 .section h2 {
-    font-size: 1.8rem;
+    font-size: 2.1rem;
 }
 
 .gears-container {
     display: flex;
+    align-items: center;
     justify-content: center;
     margin: 10px 0;
 }
 
 .gear {
     width: 30px;
+    height: 30px;
     margin: 10px;
     transition: transform 0.5s ease;
 }
 
 .gear:hover {
     transform: rotate(360deg);
-}
-
-.gear.blue {
-    color: #00bcd4;
-}
-
-.gear.red {
-    color: #f44336;
-}
-
-.gear.yellow {
-    color: #ffeb3b;
 }
 
 /* Animação de rotação */
