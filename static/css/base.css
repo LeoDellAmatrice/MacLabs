@@ -12,6 +12,11 @@
 
 }
 
+/* ========================================================= */
+
+
+/* ========================================================= */
+
 @font-face {
     font-family: "barlow";
     src: url("../fonts/Barlow_Condensed/BarlowCondensed-Thin.ttf") format("truetype");
@@ -30,6 +35,11 @@ body {
     margin: 0;
     padding: 0;
     font-family: barlow, sans-serif;
+    display: none;
+}
+
+body.loaded {
+    display: block;
 }
 
 /* ================= HEADER ================= */

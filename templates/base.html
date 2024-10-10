@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body>
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
     <header>
         <!-- Logo -->
         <a href="{{ url_for('index') }}">
@@ -64,5 +67,10 @@
         </div>
     </footer>
 </body>
+<script>
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+</script>
 {% block js %}{% endblock %}
 </html>
