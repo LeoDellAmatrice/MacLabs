@@ -1,11 +1,36 @@
 {% extends 'base.html' %}
 
 {% block title %}
-MacLabs Criar
+MacLabs Sandbox
 {% endblock %}
 
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/criar.css') }}">
+{% endblock %}
 
 {% block content %}
-<h2>Bem-vindo à página de criar!</h2>
-<p>Este é o conteúdo da página.</p>
+<div class="sandbox-container">
+    <h1>Personalize seu Produto</h1>
+    <div class="canvas-container">
+        <canvas id="sandbox-canvas"></canvas> <!-- O canvas correto -->
+    </div>
+
+    <!-- Ferramentas de personalização -->
+    <div class="tools-container">
+        <h2>Ferramentas de Personalização</h2>
+        <div class="tool">
+            <label for="color-picker">Escolha a Cor:</label>
+            <input type="color" id="color-picker" value="#00ff00"> <!-- Cor inicial -->
+        </div>
+        <div class="tool">
+            <label for="size-input">Tamanho:</label>
+            <input type="range" id="size-input" min="0.5" max="3" step="0.1" value="1"> <!-- Tamanho inicial -->
+        </div>
+    </div>
+</div>
 {% endblock %}
+
+{% block js %}
+<script type="module" src="{{ url_for('static', filename='js/criar.js') }}"></script>
+{% endblock %}
+

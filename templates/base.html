@@ -67,10 +67,11 @@
         </div>
     </footer>
 </body>
+{% block js %}
 <script>
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
 </script>
-{% block js %}{% endblock %}
+{% endblock %}
 </html>

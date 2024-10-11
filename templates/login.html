@@ -27,5 +27,10 @@ MacLabs Login
 {% endblock %}
 
 {% block js %}
+<script>
+    window.addEventListener('load', function() {
+        document.body.classList.add('loaded');
+    });
+</script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,30 @@
+body {
+    margin: 0; /* Remove margens padrão */
+}
+
+.sandbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.canvas-container {
+    width: 40vw;
+    height: 40vh;
+    background-color: #333; /* Cor de fundo para visualizar o canvas */
+}
+
+canvas {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    display: block;
+}
+
+@media (max-width: 430px) {
+    .canvas-container {
+        width: 100%;
+        height: 100%;
+    }
+}
