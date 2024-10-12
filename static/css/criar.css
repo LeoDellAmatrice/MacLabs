@@ -1,18 +1,80 @@
 body {
-    margin: 0; /* Remove margens padrão */
+    margin: 0;
 }
+
+/* Estilo do Modal */
+.modal {
+    display: none; /* Oculto por padrão */
+    position: fixed;
+    z-index: 1000; /* Coloca o modal à frente de outros elementos */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro transparente */
+}
+
+.modal-content {
+    background-color: #252525;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    color: #fff;
+}
+
+.modal-content h2 {
+    font-size: 25px;
+    margin-top: 13px;
+}
+
+.modal-content p {
+    font-size: 20px;
+}
+
+.close-button {
+    height: 40px;
+    color: #aaa;
+    float: right;
+    margin-right: 15px;
+    font-size: 45px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: #2d8ef1;
+}
+
 
 .sandbox-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
+    color: #fff;
+}
+
+/* O "card" que envolve canvas e ferramentas */
+.card {
+    background-color: #252525;
+    border-radius: 20px;
+    padding: 20px 20px 0;
+    width: 50vw;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Sombra para o card */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .canvas-container {
-    width: 40vw;
+    width: 100%;
     height: 40vh;
-    background-color: #333; /* Cor de fundo para visualizar o canvas */
+    background-color: #333;
+    border-radius: 20px;
+    margin-bottom: 20px; /* Espaço entre o canvas e as ferramentas */
 }
 
 canvas {
@@ -22,9 +84,175 @@ canvas {
     display: block;
 }
 
+/* Estilo para a seção de ferramentas */
+.tools-container {
+    background-color: #2e2e2e;
+    padding: 20px;
+    border-radius: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.tools-container h2 {
+    font-size: 30px;
+    color: #2d8ef1;
+    margin-bottom: 25px;
+}
+
+.tool {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.tool label {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+/* Input de cor */
+input[type="color"] {
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+input[type="color"]:hover {
+    transform: scale(1.1); /* Efeito de hover */
+}
+
+/* Input de range (Tamanho) */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 5px;
+    background: #2d8ef1;
+    outline: none;
+    transition: opacity 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.color-options {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.color-option:hover {
+    transform: scale(1.1);
+}
+
+.color-option[data-color="#ffffff"] {
+    border: 1px solid #ccc; /* Para contornar a cor branca */
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+    transform: scale(1.2); /* Efeito de hover no thumb */
+}
+
+.tool select, .tool input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.tool input[type="file"] {
+    padding: 5px;
+}
+
+.tool button {
+    font-size: 20px;
+    width: 100%;
+    padding: 10px;
+    background-color: #2d8ef1;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: barlow, sans-serif;
+}
+
+.tool button:hover {
+    background-color: #005bb5;
+    font-family: barlow, sans-serif;
+}
+
+.tool input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #2e2e2e;
+    border: none;
+    color: #fff;
+    margin-top: 5px;
+}
+
+.tool p {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+    color: #fff;
+    text-align: center;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .card {
+        width: 80vw;
+    }
+}
+
 @media (max-width: 430px) {
     .canvas-container {
         width: 100%;
-        height: 100%;
+        height: 50vh;
+    }
+
+    .color-options {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .tools-container h2 {
+        font-size: 30px;
+    }
+
+    .tool label {
+        font-size: 20px;
+    }
+
+    .card {
+        width: 100%;
     }
 }

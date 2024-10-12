@@ -10,8 +10,19 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, canvasContainer.clientWidth / canvasContainer.clientHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 
-// Habilitar sombras
+// Habilitar sombras e definir cor de fundo
 renderer.shadowMap.enabled = true; // Ativar o mapeamento de sombras
+renderer.setClearColor(0x252525, 1); // Define a cor de fundo (exemplo: cinza escuro)
+
+// Definindo preços básicos
+const basePricePerCubicCm = 14.00; // Preço por cm³ (ajuste conforme necessário)
+const materialPrices = {
+    pla: 0.05, // Custo do PLA por cm³
+    abs: 0.06, // Custo do ABS por cm³
+    petg: 0.07, // Custo do PETG por cm³
+    nylon: 0.08 // Custo do Nylon por cm³
+};
+const baseInfillPrice = 0.01; // Custo adicional por densidade de preenchimento
 
 // Função para ajustar o canvas e a câmera
 function ajustarCanvasECamera() {
@@ -38,18 +49,26 @@ function initThreeJS() {
     const material = new THREE.MeshStandardMaterial({ color: 0x2d8ef1 }); // Usar MeshStandardMaterial para sombras
     model = new THREE.Mesh(geometry, material); // Cria o cubo
     model.castShadow = true; // O cubo irá projetar sombra
-    model.receiveShadow = true; // O cubo irá receber sombra
     scene.add(model); // Adiciona o cubo à cena
 
+    // Cria um plano para receber a sombra
+    const planeGeometry = new THREE.PlaneGeometry(500, 500);
+    const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.5 });
+    const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+    plane.rotation.x = -Math.PI / 2; // Deita o plano horizontalmente
+    plane.position.y = -1; // Posiciona o plano abaixo do cubo
+    plane.receiveShadow = true; // O plano irá receber a sombra
+    scene.add(plane);
+
     // Adiciona uma luz direcional para criar sombras
-    const light = new THREE.DirectionalLight(0xffffff, 0.5); // Luz branca com intensidade reduzida
+    const light = new THREE.DirectionalLight(0xffffff, 1); // Luz branca
     light.position.set(0, 10, 12); // Posição da luz
     light.castShadow = true; // A luz irá projetar sombras
 
     // Ajustes na sombra
-    light.shadow.mapSize.width = 512; // Tamanho da textura da sombra
-    light.shadow.mapSize.height = 512; // Tamanho da textura da sombra
-    light.shadow.bias = 1; // Ajusta o viés da sombra
+    light.shadow.mapSize.width = 1024; // Tamanho da textura da sombra
+    light.shadow.mapSize.height = 1024; // Tamanho da textura da sombra
+    light.shadow.bias = -0.01; // Ajusta o viés da sombra para evitar deslocamento
 
     scene.add(light); // Adiciona a luz à cena
 
@@ -65,15 +84,50 @@ function initThreeJS() {
 
     animate(); // Inicia a animação
 
-    // Altera a cor e o tamanho do cubo
-    document.querySelector("#color-picker").addEventListener("input", (e) => {
-        model.material.color.set(e.target.value); // Altera a cor do cubo
-    });
+    // Atualiza o preço e o tempo estimado
+    document.querySelector("#size-input").addEventListener("input", updateEstimations);
+    document.querySelector("#material-select").addEventListener("change", updateEstimations);
+    document.querySelector("#infill-density").addEventListener("input", updateEstimations);
 
-    document.querySelector("#size-input").addEventListener("input", (e) => {
-        const scale = e.target.value;
-        model.scale.set(scale, scale, scale); // Altera o tamanho do cubo
+    // Altera a cor do cubo com base na cor selecionada
+    const colorButtons = document.querySelectorAll('.color-option');
+    colorButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const selectedColor = button.getAttribute('data-color');
+            model.material.color.set(selectedColor); // Altera a cor do cubo
+            updateEstimations(); // Atualiza as estimativas após mudar a cor
+        });
     });
+}
+
+// Função para atualizar as estimativas de tempo e preço
+function updateEstimations() {
+    const scale = document.querySelector("#size-input").value;
+    model.scale.set(scale, scale, scale); // Altera o tamanho do cubo
+
+    // Calcula o volume do cubo (lado³)
+    const volume = Math.pow(scale, 3); // Volume em cm³
+    const estimatedPrice = (volume * basePricePerCubicCm).toFixed(2); // Estima o preço
+
+    // Estima o tempo de impressão em minutos
+    const infillDensity = document.querySelector("#infill-density").value; // Obtém a densidade de preenchimento
+    const densityFactor = 1 + (infillDensity / 100); // Fator de densidade
+    const timePerCubicCm = 10; // Minutos por cm³
+    const estimatedTime = Math.max(Math.floor((volume * timePerCubicCm) * densityFactor), 1); // Tempo em minutos
+
+    // Atualiza o texto de preço estimado
+    document.querySelector("#estimated-price").textContent = `R$ ${estimatedPrice}`;
+
+    // Atualiza o texto de tempo estimado
+    document.querySelector("#estimated-time").textContent = `Aprox. ${estimatedTime} minutos`;
+
+    // Atualiza o preço com base no material e densidade de preenchimento
+    const selectedMaterial = document.querySelector("#material-select").value;
+    const materialCost = materialPrices[selectedMaterial] * (volume / 100); // Custo do material
+    const infillCost = baseInfillPrice * (infillDensity / 5); // Custo baseado na densidade de preenchimento
+
+    const totalPrice = (parseFloat(estimatedPrice) + materialCost + infillCost).toFixed(2);
+    document.querySelector("#estimated-price").textContent = `R$ ${totalPrice}`;
 }
 
 // Chama a função initThreeJS assim que a janela é carregada
@@ -89,7 +143,7 @@ window.addEventListener('resize', () => {
 });
 
 // Controle de rotação do cubo usando o mouse
-canvas.addEventListener('mousedown', (event) => {
+canvas.addEventListener('mousedown', () => {
     isMouseDown = true; // Ativa o arraste
     animationActive = false; // Pausa a animação enquanto arrasta
     clearTimeout(idleTimeout); // Limpa o temporizador de inatividade

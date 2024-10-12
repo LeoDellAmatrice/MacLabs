@@ -11,20 +11,85 @@ MacLabs Sandbox
 {% block content %}
 <div class="sandbox-container">
     <h1>Personalize seu Produto</h1>
-    <div class="canvas-container">
-        <canvas id="sandbox-canvas"></canvas> <!-- O canvas correto -->
+
+    <!-- Modal de aviso -->
+    <div id="modal-aviso" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Atenção</h2>
+            <p>A função "Sandbox" está em desenvolvimento. No momento, ela não contém todas as funcionalidades esperadas e serve apenas como um protótipo do que será possível realizar.</p>
+        </div>
     </div>
 
-    <!-- Ferramentas de personalização -->
-    <div class="tools-container">
-        <h2>Ferramentas de Personalização</h2>
-        <div class="tool">
-            <label for="color-picker">Escolha a Cor:</label>
-            <input type="color" id="color-picker" value="#00ff00"> <!-- Cor inicial -->
+    <!-- Card que contém o canvas e as ferramentas -->
+    <div class="card">
+        <!-- Canvas -->
+        <div class="canvas-container">
+            <canvas id="sandbox-canvas"></canvas> <!-- O canvas correto -->
         </div>
-        <div class="tool">
-            <label for="size-input">Tamanho:</label>
-            <input type="range" id="size-input" min="0.5" max="3" step="0.1" value="1"> <!-- Tamanho inicial -->
+
+        <!-- Ferramentas de personalização -->
+        <div class="tools-container">
+            <h2>Ferramentas de Personalização</h2>
+
+            <div class="tool">
+                <label>Escolha a Cor do Filamento:</label>
+                <div class="color-options">
+                    <button class="color-option" data-color="#2d8ef1" style="background-color: #2d8ef1;"></button>
+                    <button class="color-option" data-color="#ff0000" style="background-color: #ff0000;"></button>
+                    <button class="color-option" data-color="#00ff00" style="background-color: #00ff00;"></button>
+                    <button class="color-option" data-color="#ffff00" style="background-color: #ffff00;"></button>
+                    <button class="color-option" data-color="#ff00ff" style="background-color: #ff00ff;"></button>
+                    <button class="color-option" data-color="#000000" style="background-color: #000000;"></button>
+                    <button class="color-option" data-color="#ffffff" style="background-color: #ffffff; border: 1px solid #ccc;"></button>
+                </div>
+            </div>
+
+            <div class="tool">
+                <label for="size-input">Tamanho:</label>
+                <input type="range" id="size-input" min="0.5" max="3" step="0.1" value="1"> <!-- Tamanho inicial -->
+            </div>
+
+            <div class="tool">
+                <label for="material-select">Escolha o Material:</label>
+                <select id="material-select">
+                    <option value="pla">PLA (Plástico de Ácido Polilático)</option>
+                    <option value="abs">ABS (Acrilonitrila Butadieno Estireno)</option>
+                    <option value="petg">PETG (Polietileno Tereftalato Glicol)</option>
+                    <option value="nylon">Nylon</option>
+                </select>
+            </div>
+
+            <div class="tool">
+                <label for="infill-density">Densidade do Preenchimento (%):</label>
+                <input type="range" id="infill-density" min="0" max="100" step="5" value="20">
+            </div>
+
+            <div class="tool">
+                <label for="surface-texture">Acabamento da Superfície:</label>
+                <select id="surface-texture">
+                    <option value="smooth">Liso</option>
+                    <option value="matte">Fosco</option>
+                    <option value="textured">Texturizado</option>
+                    <option value="glossy">Brilhante</option>
+                </select>
+            </div>
+
+            <div class="tool">
+                <label>Tempo Estimado de Impressão:</label>
+                <p id="estimated-time">Aprox. 12 Minutos</p>
+            </div>
+            <div class="tool">
+                <label>Preço Estimado:</label>
+                <p id="estimated-price">R$ 14,04</p>
+            </div>
+
+            <div class="tool">
+                <button id="save-project">Salvar Projeto</button>
+            </div>
+            <div class="tool">
+                <button id="buy-project">Comprar</button>
+            </div>
         </div>
     </div>
 </div>
@@ -32,5 +97,5 @@ MacLabs Sandbox
 
 {% block js %}
 <script type="module" src="{{ url_for('static', filename='js/criar.js') }}"></script>
+<script src="{{ url_for('static', filename='js/modal.js') }}"></script>
 {% endblock %}
-

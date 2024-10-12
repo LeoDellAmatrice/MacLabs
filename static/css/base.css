@@ -180,18 +180,21 @@ li {
     }
 }
 
-/* Tela até 780px */
-@media (max-width: 780px) {
-    footer {
-        grid-template-columns: repeat(1, 1fr);
-        gap: 10px;
-    }
-
+/* Tela até 800px */
+@media (max-width: 800px) {
     #nav-menu {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
         width: 100%;
+    }
+}
+
+/* Tela até 780px */
+@media (max-width: 780px) {
+    footer {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
     }
 
     #redes-sociais {
@@ -230,7 +233,7 @@ li {
         font-size: var(--font-size-extra-small);
         min-width: 75px;
         width: 110%;
-        padding: 8px;
+        padding: 4px 8px;
         margin: 2px;
     }
 
