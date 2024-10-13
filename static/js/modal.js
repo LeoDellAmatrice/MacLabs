@@ -1,21 +1,14 @@
-window.addEventListener('load', function() {
-    document.body.classList.add('loaded');
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('modal-container');
+    const closeModal = document.getElementById('close-modal');
 
-    // Exibir o modal
-    const modal = document.getElementById('modal-aviso');
-    const closeButton = document.querySelector('.close-button');
+    // Mostra o modal ao carregar a página
+    modal.classList.add('visible');
+    document.body.style.overflow = 'hidden'; // Impede a rolagem
 
-    modal.style.display = 'block';
-
-    // Função para fechar o modal quando o usuário clicar no 'x'
-    closeButton.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Fechar o modal se o usuário clicar fora do conteúdo
-    window.addEventListener('click', (event) => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
+    // Fecha o modal ao clicar no botão
+    closeModal.addEventListener('click', function() {
+        modal.classList.remove('visible');
+        document.body.style.overflow = ''; // Restaura a rolagem
     });
 });

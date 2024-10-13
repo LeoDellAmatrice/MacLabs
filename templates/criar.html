@@ -13,11 +13,16 @@ MacLabs Sandbox
     <h1>Personalize seu Produto</h1>
 
     <!-- Modal de aviso -->
-    <div id="modal-aviso" class="modal">
+    <div id="modal-container" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h2>Atenção</h2>
-            <p>A função "Sandbox" está em desenvolvimento. No momento, ela não contém todas as funcionalidades esperadas e serve apenas como um protótipo do que será possível realizar.</p>
+            <div id="titulo-modal">
+                <img src="{{ url_for('static', filename='img/exclamacao.svg') }}" alt="Ponto de Exclamação">
+                <h2>Atenção</h2>
+                <img src="{{ url_for('static', filename='img/exclamacao.svg') }}" alt="Ponto de Exclamação">
+            </div>
+            <p>Esta funcionalidade Sandbox está em desenvolvimento e pode não refletir todas as capacidades do produto final.</p>
+            <p>Os valores de preço e o tempo estimado de impressão são aproximados e podem não ser totalmente precisos.</p>
+            <button id="close-modal">Entendi</button>
         </div>
     </div>
 
@@ -48,6 +53,7 @@ MacLabs Sandbox
             <div class="tool">
                 <label for="size-input">Tamanho:</label>
                 <input type="range" id="size-input" min="0.5" max="3" step="0.1" value="1"> <!-- Tamanho inicial -->
+                <span id="size-value">1.0</span>
             </div>
 
             <div class="tool">
@@ -62,7 +68,8 @@ MacLabs Sandbox
 
             <div class="tool">
                 <label for="infill-density">Densidade do Preenchimento (%):</label>
-                <input type="range" id="infill-density" min="0" max="100" step="5" value="20">
+                <input type="range" id="infill-density" min="5" max="100" step="5" value="20">
+                <span id="infill-value">20%</span>
             </div>
 
             <div class="tool">

@@ -125,9 +125,6 @@ footer {
 }
 
 /* Redes sociais */
-#redes-sociais {
-    text-align: center;
-}
 
 #redes-sociais h3{
     font-size: var(--font-size-large);
@@ -147,7 +144,6 @@ footer ul {
 
 #redes-sociais li, a, h3, ul {
     text-decoration: none;
-    text-align: center;
     color: var(--text-color);
 }
 

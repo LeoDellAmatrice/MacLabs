@@ -11,18 +11,18 @@ const camera = new THREE.PerspectiveCamera(75, canvasContainer.clientWidth / can
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 
 // Habilitar sombras e definir cor de fundo
-renderer.shadowMap.enabled = true; // Ativar o mapeamento de sombras
-renderer.setClearColor(0x252525, 1); // Define a cor de fundo (exemplo: cinza escuro)
+renderer.shadowMap.enabled = true;
+renderer.setClearColor(0x252525, 1);
 
 // Definindo preços básicos
-const basePricePerCubicCm = 14.00; // Preço por cm³ (ajuste conforme necessário)
+const basePricePerCubicCm = 5.00;
 const materialPrices = {
-    pla: 0.05, // Custo do PLA por cm³
-    abs: 0.06, // Custo do ABS por cm³
-    petg: 0.07, // Custo do PETG por cm³
-    nylon: 0.08 // Custo do Nylon por cm³
+    pla: 0.05,
+    abs: 0.06,
+    petg: 0.07,
+    nylon: 0.08
 };
-const baseInfillPrice = 0.01; // Custo adicional por densidade de preenchimento
+const baseInfillPrice = 0.01;
 
 // Função para ajustar o canvas e a câmera
 function ajustarCanvasECamera() {
@@ -44,58 +44,64 @@ let animationActive = true;
 function initThreeJS() {
     ajustarCanvasECamera();
 
-    // Cria um cubo básico
     const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshStandardMaterial({ color: 0x2d8ef1 }); // Usar MeshStandardMaterial para sombras
-    model = new THREE.Mesh(geometry, material); // Cria o cubo
-    model.castShadow = true; // O cubo irá projetar sombra
-    scene.add(model); // Adiciona o cubo à cena
+    const material = new THREE.MeshStandardMaterial({ color: 0x2d8ef1 });
+    model = new THREE.Mesh(geometry, material);
+    model.castShadow = true;
+    scene.add(model);
 
-    // Cria um plano para receber a sombra
     const planeGeometry = new THREE.PlaneGeometry(500, 500);
     const planeMaterial = new THREE.ShadowMaterial({ opacity: 0.5 });
     const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.rotation.x = -Math.PI / 2; // Deita o plano horizontalmente
-    plane.position.y = -1; // Posiciona o plano abaixo do cubo
-    plane.receiveShadow = true; // O plano irá receber a sombra
+    plane.rotation.x = -Math.PI / 2;
+    plane.position.y = -1;
+    plane.receiveShadow = true;
     scene.add(plane);
 
-    // Adiciona uma luz direcional para criar sombras
-    const light = new THREE.DirectionalLight(0xffffff, 1); // Luz branca
-    light.position.set(0, 10, 12); // Posição da luz
-    light.castShadow = true; // A luz irá projetar sombras
+    const light = new THREE.DirectionalLight(0xffffff, 1);
+    light.position.set(0, 10, 12);
+    light.castShadow = true;
+    light.shadow.mapSize.width = 1024;
+    light.shadow.mapSize.height = 1024;
+    light.shadow.bias = -0.01;
 
-    // Ajustes na sombra
-    light.shadow.mapSize.width = 1024; // Tamanho da textura da sombra
-    light.shadow.mapSize.height = 1024; // Tamanho da textura da sombra
-    light.shadow.bias = -0.01; // Ajusta o viés da sombra para evitar deslocamento
-
-    scene.add(light); // Adiciona a luz à cena
+    scene.add(light);
 
     camera.position.z = 5;
 
     function animate() {
         if (animationActive && model) {
-            model.rotation.y += 0.01; // Anima a rotação do cubo
+            model.rotation.y += 0.01;
         }
-        renderer.render(scene, camera); // Renderiza a cena
-        requestAnimationFrame(animate); // Chama a animação novamente
+        renderer.render(scene, camera);
+        requestAnimationFrame(animate);
     }
 
-    animate(); // Inicia a animação
+    animate();
 
     // Atualiza o preço e o tempo estimado
-    document.querySelector("#size-input").addEventListener("input", updateEstimations);
-    document.querySelector("#material-select").addEventListener("change", updateEstimations);
-    document.querySelector("#infill-density").addEventListener("input", updateEstimations);
+    const sizeInput = document.querySelector("#size-input");
+    const infillInput = document.querySelector("#infill-density");
+    const sizeValueDisplay = document.querySelector("#size-value");
+    const infillValueDisplay = document.querySelector("#infill-value");
 
-    // Altera a cor do cubo com base na cor selecionada
+    sizeInput.addEventListener("input", () => {
+        sizeValueDisplay.textContent = sizeInput.value; // Exibe o valor atual do tamanho
+        updateEstimations();
+    });
+    infillInput.addEventListener("input", () => {
+        infillValueDisplay.textContent = `${infillInput.value}%`; // Exibe o valor atual da densidade
+        updateEstimations();
+    });
+
+    document.querySelector("#material-select").addEventListener("change", updateEstimations);
+
     const colorButtons = document.querySelectorAll('.color-option');
     colorButtons.forEach(button => {
         button.addEventListener('click', () => {
             const selectedColor = button.getAttribute('data-color');
-            model.material.color.set(selectedColor); // Altera a cor do cubo
-            updateEstimations(); // Atualiza as estimativas após mudar a cor
+            model.material.color.set(selectedColor);
+            updateEstimations();
         });
     });
 }
@@ -103,63 +109,53 @@ function initThreeJS() {
 // Função para atualizar as estimativas de tempo e preço
 function updateEstimations() {
     const scale = document.querySelector("#size-input").value;
-    model.scale.set(scale, scale, scale); // Altera o tamanho do cubo
+    model.scale.set(scale, scale, scale);
 
-    // Calcula o volume do cubo (lado³)
-    const volume = Math.pow(scale, 3); // Volume em cm³
-    const estimatedPrice = (volume * basePricePerCubicCm).toFixed(2); // Estima o preço
+    const volume = Math.pow(scale, 3);
+    const infillDensity = document.querySelector("#infill-density").value;
+    const densityFactor = 1 + (infillDensity / 100);
+    const timePerCubicCm = 10;
+    const estimatedTime = Math.max(Math.floor((volume * timePerCubicCm) * densityFactor), 1);
 
-    // Estima o tempo de impressão em minutos
-    const infillDensity = document.querySelector("#infill-density").value; // Obtém a densidade de preenchimento
-    const densityFactor = 1 + (infillDensity / 100); // Fator de densidade
-    const timePerCubicCm = 10; // Minutos por cm³
-    const estimatedTime = Math.max(Math.floor((volume * timePerCubicCm) * densityFactor), 1); // Tempo em minutos
-
-    // Atualiza o texto de preço estimado
-    document.querySelector("#estimated-price").textContent = `R$ ${estimatedPrice}`;
-
-    // Atualiza o texto de tempo estimado
     document.querySelector("#estimated-time").textContent = `Aprox. ${estimatedTime} minutos`;
 
-    // Atualiza o preço com base no material e densidade de preenchimento
     const selectedMaterial = document.querySelector("#material-select").value;
-    const materialCost = materialPrices[selectedMaterial] * (volume / 100); // Custo do material
-    const infillCost = baseInfillPrice * (infillDensity / 5); // Custo baseado na densidade de preenchimento
+    const materialCost = materialPrices[selectedMaterial] * (volume / 100);
+    const infillCost = baseInfillPrice * (infillDensity / 5);
+    const estimatedPrice = (volume * basePricePerCubicCm + materialCost + infillCost).toFixed(2);
 
-    const totalPrice = (parseFloat(estimatedPrice) + materialCost + infillCost).toFixed(2);
-    document.querySelector("#estimated-price").textContent = `R$ ${totalPrice}`;
+    document.querySelector("#estimated-price").textContent = `R$ ${estimatedPrice}`;
 }
 
 // Chama a função initThreeJS assim que a janela é carregada
 window.addEventListener('load', function() {
     document.body.classList.add('loaded');
-    initThreeJS(); // Inicializa a cena 3D
+    initThreeJS();
 });
 
-// Redimensiona o canvas quando a janela é redimensionada
 window.addEventListener('resize', () => {
-    ajustarCanvasECamera(); // Ajusta a câmera e o canvas
-    renderer.render(scene, camera); // Renderiza novamente após o redimensionamento
+    ajustarCanvasECamera();
+    renderer.render(scene, camera);
 });
 
-// Controle de rotação do cubo usando o mouse
+// Controle de rotação do cubo usando o mouse e touch
 canvas.addEventListener('mousedown', () => {
-    isMouseDown = true; // Ativa o arraste
-    animationActive = false; // Pausa a animação enquanto arrasta
-    clearTimeout(idleTimeout); // Limpa o temporizador de inatividade
+    isMouseDown = true;
+    animationActive = false;
+    clearTimeout(idleTimeout);
 });
 
 canvas.addEventListener('mousemove', (event) => {
     if (!isMouseDown) return;
 
     const deltaMove = {
-        x: previousMousePosition.x - event.offsetX, // Inverte a rotação Y
-        y: previousMousePosition.y - event.offsetY, // Inverte a rotação X
+        x: previousMousePosition.x - event.offsetX,
+        y: previousMousePosition.y - event.offsetY,
     };
 
     if (model) {
-        model.rotation.y += deltaMove.x * 0.01; // Rotação correta no eixo Y
-        model.rotation.x -= deltaMove.y * 0.01; // Inverte a rotação no eixo X
+        model.rotation.y += deltaMove.x * 0.01;
+        model.rotation.x -= deltaMove.y * 0.01;
     }
 
     previousMousePosition = {
@@ -169,24 +165,23 @@ canvas.addEventListener('mousemove', (event) => {
 
     clearTimeout(idleTimeout);
     idleTimeout = setTimeout(() => {
-        animationActive = true; // Retorna à animação após o tempo de inatividade
+        animationActive = true;
     }, idleTime);
 });
 
 canvas.addEventListener('mouseup', () => {
-    isMouseDown = false; // Para a rotação quando o botão do mouse é liberado
+    isMouseDown = false;
 });
 
 canvas.addEventListener('mouseleave', () => {
-    isMouseDown = false; // Para a rotação quando o mouse sai do canvas
+    isMouseDown = false;
 });
 
-// Adiciona controle de touch para dispositivos móveis
 canvas.addEventListener('touchstart', (event) => {
-    isMouseDown = true; // Ativa o arraste
-    animationActive = false; // Pausa a animação enquanto arrasta
-    clearTimeout(idleTimeout); // Limpa o temporizador de inatividade
-    event.preventDefault(); // Prevê o comportamento padrão do touch
+    isMouseDown = true;
+    animationActive = false;
+    clearTimeout(idleTimeout);
+    event.preventDefault();
 });
 
 canvas.addEventListener('touchmove', (event) => {
@@ -199,8 +194,8 @@ canvas.addEventListener('touchmove', (event) => {
     };
 
     if (model) {
-        model.rotation.y += deltaMove.x * 0.01; // Rotação correta no eixo Y
-        model.rotation.x -= deltaMove.y * 0.01; // Inverte a rotação no eixo X
+        model.rotation.y += deltaMove.x * 0.01;
+        model.rotation.x -= deltaMove.y * 0.01;
     }
 
     previousMousePosition = {
@@ -210,12 +205,12 @@ canvas.addEventListener('touchmove', (event) => {
 
     clearTimeout(idleTimeout);
     idleTimeout = setTimeout(() => {
-        animationActive = true; // Retorna à animação após o tempo de inatividade
+        animationActive = true;
     }, idleTime);
 
-    event.preventDefault(); // Prevê o comportamento padrão do touch
+    event.preventDefault();
 });
 
 canvas.addEventListener('touchend', () => {
-    isMouseDown = false; // Para a rotação quando o toque termina
+    isMouseDown = false;
 });
