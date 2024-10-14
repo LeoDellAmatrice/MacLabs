@@ -193,10 +193,6 @@ li {
         gap: 10px;
     }
 
-    #redes-sociais {
-        width: 100%;
-    }
-
     footer h3 {
         text-align: center;
     }
@@ -205,9 +201,6 @@ li {
         margin-top: 30px;
     }
 
-    #redes-sociais li {
-        width: 100%;
-    }
 
     #redes-sociais img {
         margin-right: 5px;
@@ -231,10 +224,6 @@ li {
         width: 110%;
         padding: 4px 8px;
         margin: 2px;
-    }
-
-    li {
-        width: 100%;
     }
 
     #redes-sociais li a {

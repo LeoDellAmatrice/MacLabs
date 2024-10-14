@@ -1,0 +1,138 @@
+.hero-section {
+    background: linear-gradient(to right, #1c588f, #5195e8);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+}
+
+.hero-section h1 {
+    font-size: 3rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.hero-section p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #2d8ef1;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #f44336;
+}
+
+.features-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 40px 20px;
+}
+
+.feature-card {
+    background-color: var(--secondary-bg-color);
+    color: var(--text-color);
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 300px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+.feature-card img {
+    width: 80px;
+    margin-bottom: 15px;
+}
+
+.feature-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.feature-card .view-button {
+    background-color: var(--hover-color);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.feature-card .view-button:hover {
+    background-color: #2d8ef1;
+}
+
+.call-to-action {
+    background-color: #353535;
+    padding: 40px 20px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 40px 0;
+    color: #fff;
+}
+
+.call-to-action h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.call-to-action p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.call-to-action .cta-button {
+    margin: 5px;
+}
+
+.cta-button {
+    background-color: #2d8ef1;
+}
+
+.cta-button:hover {
+    background-color: #1a73e8;
+}
+
+@media (max-width: 768px) {
+    .features-section {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature-card {
+        width: 100%;
+    }
+
+    .hero-section h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero-section p {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        width: 100%;
+    }
+}

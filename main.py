@@ -3,10 +3,23 @@ import os
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
+lista_produtos = [
+        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'Caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
+        {'nome': 'Dispenser de pilhas AA e AAA', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/dispenser_pilha.png'},
+        {'nome': 'Funil', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/funil.png'},
+        {'nome': 'Garfo', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/garfo.png'},
+        {'nome': 'Mesas e cadeiras', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/mesas_cadeiras.png'},
+        {'nome': 'Porta lápis', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/porta_lapis.png'},
+        {'nome': 'Shuriken', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/shuriken.png'},
+        # Adicione mais produtos conforme necessário
+    ]
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', produtos=lista_produtos)
 
 
 @app.route('/upload', methods=["GET", "POST"])
@@ -32,18 +45,6 @@ def criar():
 
 @app.route('/produtos')
 def produtos():
-    lista_produtos = [
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
-        {'nome': 'Caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
-        {'nome': 'Caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
-        {'nome': 'Dispenser de pilhas AA e AAA', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/dispenser_pilha.png'},
-        {'nome': 'Funil', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/funil.png'},
-        {'nome': 'Garfo', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/garfo.png'},
-        {'nome': 'Mesas e cadeiras', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/mesas_cadeiras.png'},
-        {'nome': 'Porta lápis', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/porta_lapis.png'},
-        {'nome': 'Shuriken', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/shuriken.png'},
-        # Adicione mais produtos conforme necessário
-    ]
 
     return render_template('produtos.html', produtos=lista_produtos)
 
