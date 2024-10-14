@@ -45,9 +45,10 @@
     border-radius: 20px;
     padding: 20px;
     max-width: 300px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
 }
 
 .feature-card:hover {
@@ -56,12 +57,12 @@
 }
 
 .feature-card img {
-    width: 80px;
-    margin-bottom: 15px;
+    width: 100px;
 }
 
 .feature-card h2 {
     font-size: 1.8rem;
+    margin-top: 10px;
     margin-bottom: 10px;
 }
 
@@ -72,7 +73,11 @@
 
 .feature-card .view-button {
     background-color: var(--hover-color);
+    cursor: pointer;
     color: #fff;
+    font-size: 16px;
+    font-family: barlow, sans-serif;
+    border: 0 !important;
     padding: 10px 20px;
     border-radius: 20px;
     text-decoration: none;
@@ -106,7 +111,14 @@
     margin: 5px;
 }
 
+.cta-buttons {
+    display: grid;
+    justify-items: center;
+}
+
 .cta-button {
+    width: 20%;
+    font-size: 25px;
     background-color: #2d8ef1;
 }
 
@@ -120,8 +132,10 @@
         align-items: center;
     }
 
-    .feature-card {
-        width: 100%;
+    .cta-button {
+        width: 40%;
+        font-size: 20px;
+        background-color: #2d8ef1;
     }
 
     .hero-section h1 {
@@ -132,7 +146,11 @@
         font-size: 1.2rem;
     }
 
-    .cta-button {
-        width: 100%;
+}
+
+@media (max-width: 420px) {
+    .features-section {
+        padding-left: 0;
+        padding-right: 0;
     }
 }

@@ -16,30 +16,44 @@ MacLabs
 
 <section class="features-section">
     <div class="feature-card">
-        <img src="{{ url_for('static', filename='img/icon-produtos.svg') }}" alt="Produtos">
-        <h2>Nossos Produtos</h2>
-        <p>Descubra itens impressos em 3D com alta precisão e qualidade. Confira nosso catálogo diversificado.</p>
-        <a href="{{ url_for('produtos') }}" class="view-button">Ver Produtos</a>
+        <a href="{{ url_for('produtos') }}">
+            <div>
+                <img src="{{ url_for('static', filename='img/icon-produtos.svg') }}" alt="Produtos">
+                <h2>Nossos Produtos</h2>
+                <p>Descubra itens impressos em 3D com alta precisão e qualidade. Confira nosso catálogo diversificado.</p>
+                <button class="view-button">Ver Produtos</button>
+            </div>
+        </a>
     </div>
     <div class="feature-card">
-        <img src="{{ url_for('static', filename='img/icon-sandbox.svg') }}" alt="Sandbox">
-        <h2>Sandbox</h2>
-        <p>Personalize seu próprio produto em nosso ambiente interativo. Crie e veja seu design ganhar vida.</p>
-        <a href="{{ url_for('criar') }}" class="view-button">Acesse o Sandbox</a>
+        <a href="{{ url_for('criar') }}">
+            <div>
+                <img src="{{ url_for('static', filename='img/icon-sandbox.svg') }}" alt="Sandbox">
+                <h2>Sandbox</h2>
+                <p>Personalize seu próprio produto em nosso ambiente interativo. Crie e veja seu design ganhar vida.</p>
+                <button class="view-button">Acesse o Sandbox</button>
+            </div>
+        </a>
     </div>
     <div class="feature-card">
-        <img src="{{ url_for('static', filename='img/icon-sobre.svg') }}" alt="Sobre">
-        <h2>Sobre Nós</h2>
-        <p>Saiba mais sobre a história e os valores que guiam a MacLabs na jornada pela inovação.</p>
-        <a href="{{ url_for('sobre') }}" class="view-button">Nossa História</a>
+        <a href="{{ url_for('sobre') }}">
+            <div>
+                <img src="{{ url_for('static', filename='img/icon-sobre.svg') }}" alt="Sobre">
+                <h2>Sobre Nós</h2>
+                <p>Saiba mais sobre a história e os valores que guiam a MacLabs na jornada pela inovação.</p>
+                <button class="view-button">Nossa História</button>
+            </div>
+        </a>
     </div>
 </section>
 
 <section class="call-to-action">
     <h2>Junte-se à MacLabs</h2>
     <p>Criar, inovar e personalizar está ao seu alcance. Faça seu login ou inscrição para começar.</p>
-    <a href="{{ url_for('login') }}" class="cta-button">Login</a>
-    <a href="{{ url_for('inscricao') }}" class="cta-button">Inscrever-se</a>
+    <div class="cta-buttons" >
+        <a href="{{ url_for('login') }}" class="cta-button">Login</a>
+        <a href="{{ url_for('inscricao') }}" class="cta-button">Inscrever-se</a>
+    </div>
 </section>
 
 {% endblock %}
