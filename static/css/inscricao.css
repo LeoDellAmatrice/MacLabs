@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 70vh;
+    margin: 40px;
 }
 
 .formInscricao {
@@ -80,7 +80,7 @@
     border: 1px solid var(--input-border-color);
     border-radius: 5px;
     color: var(--text-color);
-    font-size: var(--font-size-medium);
+    font-size: var(--font-size-extra-small);
     box-sizing: border-box;
 }
 
