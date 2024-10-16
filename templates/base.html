@@ -40,30 +40,36 @@
     </main>
 
     <footer>
-        <!-- Logo -->
-        <div id="logo-completa">
-            <img src="{{url_for('static', filename='img/logocompleta.svg')}}" alt="Logo completa MacLabs">
+        <div id="footer-principal">
+            <!-- Logo -->
+            <div id="logo-completa">
+                <img src="{{url_for('static', filename='img/logocompleta.svg')}}" alt="Logo completa MacLabs">
+            </div>
+            <!-- contato -->
+            <div id="contato">
+                <h3>Contato</h3>
+                <ul>
+                    <li>Email: Maclabs@gmail.com</li>
+                    <li>Telefone: (11) 99999-9999</li>
+                </ul>
+            </div>
+            <!-- redes sociais -->
+            <div id="redes-sociais">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename='img/facebook.svg')}}" alt="#redes-sociais">Facebook</a></li>
+                    <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename='img/instagram.svg')}}" alt="#redes-sociais">Instagram</a></li>
+                    <li><a href="https://in.linkedin.com/" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename='img/linkedin.svg')}}" alt="#redes-sociais">LinkedIn</a></li>
+                </ul>
+            </div>
         </div>
-        <!-- contato -->
-        <div id="contato">
-            <h3>Contato</h3>
-            <ul>
-                <li>Email: Maclabs@gmail.com</li>
-                <li>Telefone: (11) 99999-9999</li>
-            </ul>
-        </div>
-        <!-- redes sociais -->
-        <div id="redes-sociais">
-            <h3>Redes Sociais</h3>
-            <ul>
-                <li><a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename='img/facebook.svg')}}" alt="#redes-sociais">Facebook</a></li>
-                <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename='img/instagram.svg')}}" alt="#redes-sociais">Instagram</a></li>
-                <li><a href="https://in.linkedin.com/" target="_blank" rel="noopener noreferrer"><img src="{{url_for('static', filename='img/linkedin.svg')}}" alt="#redes-sociais">LinkedIn</a></li>
-            </ul>
-        </div>
-        <!-- copyright -->
-        <div id="copyright">
-            <p> © 2024 MacLabs. Todos os direitos reservados.</p>
+        <hr>
+        <div id="footer-inferior">
+            <!-- copyright -->
+            <div id="copyright">
+                <p> © 2024 MacLabs. Todos os direitos reservados.</p>
+                <p>Desenvolvido por Leonardo Dell'Amatrice Silva.</p>
+            </div>
         </div>
     </footer>
 </body>
