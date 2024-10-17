@@ -1,5 +1,7 @@
 /* Variáveis globais */
 :root {
+    --red-color: #fe074c;
+    --yelow-color: #ffce01;
     --primary-bg-color: #353535;
     --secondary-bg-color: #252525;
     --button-bg-color: #505050;
@@ -133,7 +135,7 @@ footer {
 #footer-principal {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: start;
 }
 
 footer hr {
@@ -144,46 +146,39 @@ footer hr {
 }
 
 /* Contatos */
-#contato li a, h3 {
+footer li a, h3 {
     text-decoration: none;
     text-align: center;
     color: var(--text-color);
 }
 
-#contato h3{
+footer h3{
     font-size: var(--font-size-large);
 }
 
 /* Redes sociais */
 
-#redes-sociais h3{
-    font-size: var(--font-size-large);
-}
-
-#redes-sociais img {
-    align-items: center;
-}
-
 footer ul {
-    padding: 10px;
+    padding: 10px 0;
+}
+
+#logo-completa {
+    align-self: center;
 }
 
 #logo-completa img {
-    height: 90px;
+    width: 210px;
 }
 
-#redes-sociais li, a, h3, ul {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-#redes-sociais img {
-    height: 1em;
-    margin-right: 10px;
-    vertical-align: middle;
+#redes-sociais img, #contato img {
+    margin-right: 5px;
+    height: 30px;
+    width: 30px;
 }
 
 li {
+    display: flex;
+    align-content: center;
     font-size: 25px;
     color: var(--text-color);
     list-style-type: none;
