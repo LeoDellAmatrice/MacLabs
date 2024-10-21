@@ -196,6 +196,11 @@ li {
     margin: 25px 0 0;
     font-size: 20px;
 }
+
+#copyright div p {
+    margin: 3px;
+}
+
 /* ================= MEDIA QUERIES ================= */
 
 /* Tela até 950px */
@@ -205,6 +210,10 @@ li {
         grid-template-columns: repeat(2, 1fr);
         justify-items: center;
         padding: 0;
+    }
+
+    #copyright #desenvolvedores {
+        flex-direction: column;
     }
 }
 
