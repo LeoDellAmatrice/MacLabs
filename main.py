@@ -4,16 +4,25 @@ import re
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
-lista_produtos = [
-        {'nome': 'Prato para vaso', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/pote_flor.svg'},
-        {'nome': 'Caixa empilhavel', 'preco': 'R$ 150,00', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
-        {'nome': 'Caixa com divisorias empilhavel', 'preco': 'R$ 200,00', 'imagem': 'img/produtos/caixa_divisoria.svg'},
-        {'nome': 'Dispenser de pilhas AA e AAA', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/dispenser_pilha.png'},
-        {'nome': 'Funil', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/funil.png'},
-        {'nome': 'Garfo', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/garfo.png'},
-        {'nome': 'Mesas e cadeiras', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/mesas_cadeiras.png'},
-        {'nome': 'Porta lápis', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/porta_lapis.png'},
-        {'nome': 'Shuriken', 'preco': 'R$ 100,00', 'imagem': 'img/produtos/shuriken.png'},
+lista_produtos: [str, str] = [
+        {'nome': 'Prato para vaso', 'imagem': 'img/produtos/pote_flor.svg'},
+        {'nome': 'Caixa empilhavel', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
+        {'nome': 'Dispenser de pilhas AA e AAA', 'imagem': 'img/produtos/dispenser_pilha.png'},
+        {'nome': 'Funil', 'imagem': 'img/produtos/funil.png'},
+        {'nome': 'Garfo', 'imagem': 'img/produtos/garfo.png'},
+        {'nome': 'Mesas e cadeiras', 'imagem': 'img/produtos/mesas_cadeiras.png'},
+        {'nome': 'Porta lápis', 'imagem': 'img/produtos/porta_lapis.png'},
+        {'nome': 'Shuriken', 'imagem': 'img/produtos/shuriken.png'},
+        {'nome': 'Elefante', 'imagem': 'img/produtos/elefante.png'},
+        {'nome': 'Sapo', 'imagem': 'img/produtos/sapo.png'},
+        {'nome': 'Gato', 'imagem': 'img/produtos/gato.png'},
+        {'nome': 'Chave de boca ajustável', 'imagem': 'img/produtos/chave_de_boca_ajustavel.png'},
+        {'nome': 'Tubarão articulado', 'imagem': 'img/produtos/tubarao_articulado.png'},
+        {'nome': 'Mini catapulta', 'imagem': 'img/produtos/mini_catapulta.png'},
+        {'nome': 'Suporte para celular', 'imagem': 'img/produtos/suporte_para_celular.png'},
+        {'nome': 'Coelho', 'imagem': 'img/produtos/coelho.png'},
+        {'nome': 'Foguete', 'imagem': 'img/produtos/foguete.png'},
+        {'nome': 'Anel de gato', 'imagem': 'img/produtos/anel_de_gato.png'}
         # Adicione mais produtos conforme necessário
     ]
 
