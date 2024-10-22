@@ -1,5 +1,6 @@
 from flask import Flask, redirect, url_for, render_template, request
 import os
+import re
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
@@ -47,6 +48,19 @@ def criar():
 def produtos():
 
     return render_template('produtos.html', produtos=lista_produtos)
+
+
+@app.route('/produtos-filtrados')
+def produtos_filtrados():
+    filtro = request.args.get('filtro-nome')
+    lista_filtrada = []
+    for produto in lista_produtos:
+        if re.search(filtro.lower(), produto.get('nome').lower()):
+            lista_filtrada.append(produto)
+
+    if not lista_filtrada:
+        return render_template('produtos.html', produtos=[], mensagem="Nenhum produto encontrado")
+    return render_template('produtos.html', produtos=lista_filtrada)
 
 
 @app.route("/login", methods=["GET", "POST"])

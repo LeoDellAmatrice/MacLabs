@@ -30,8 +30,9 @@
         </nav>
         <!-- Botões de login/inscrição -->
         <div id="nav-buttons">
-            <a href="/login" class="button">Fazer login</a>
-            <a href="/inscricao" class="button">Inscrever-se</a>
+            <a id="login" href="/login" class="button">Fazer login</a>
+            <a id="inscricao" href="/inscricao" class="button">Inscrever-se</a>
+            <p id="usuario-logado"></p>
         </div>
     </header>
 
@@ -87,11 +88,26 @@
         </div>
     </footer>
 </body>
-{% block js %}
 <script>
     window.addEventListener('load', function() {
         document.body.classList.add('loaded');
     });
+
+    const usuarioLocalStorage = window.localStorage.getItem("usuario");
+    const login = document.getElementById("login");
+    const inscricao = document.getElementById("inscricao")
+    console.log("->>>>>>", usuarioLocalStorage)
+
+    if (usuarioLocalStorage != null) {
+        const usuario_logado = document.getElementById("usuario-logado");
+        usuario_logado.textContent = usuarioLocalStorage
+        login.style.display = "none";
+        inscricao.style.display = "none";
+    } else {
+        login.style.display = "block";
+        inscricao.style.display = "block";
+    }
 </script>
+{% block js %}
 {% endblock %}
 </html>

@@ -8,16 +8,25 @@ MacLabs Produtos
 <link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
 {% endblock %}
 
-{% block content %}
-<div id="barra_pesquisa">
 
+
+{% block content %}
+<section class="hero-section">
+    <h1>Produtos</h1>
+    <p>Descubra itens impressos em 3D com precisão e qualidade.</p>
+</section>
+<div id="barra_pesquisa">
+    <form action="{{ url_for('produtos_filtrados') }}" method="GET">
+        <input type="text" id="search-input" name="filtro-nome" placeholder="Pesquisar por nome...">
+        <button id="search-button" type="submit">Buscar</button>
+        <button id="reset-button" type="reset">Limpar</button>
+    </form>
 </div>
 <section class="products-section">
-    <div class="products-header">
-        <h1>Nossos Produtos</h1>
-        <p>Descubra itens impressos em 3D com precisão e qualidade.</p>
-    </div>
     <div class="products-container">
+        {% if mensagem %}
+        <h4>{{ mensagem }}</h4>
+        {% endif %}
         {% for produto in produtos %}
             <div class="product-card">
                 <img src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
