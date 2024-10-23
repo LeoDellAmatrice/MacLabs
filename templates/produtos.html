@@ -17,8 +17,10 @@ MacLabs Produtos
 </section>
 <div id="barra_pesquisa">
     <form action="{{ url_for('produtos_filtrados') }}" method="GET">
-        <input type="text" id="search-input" name="filtro-nome" placeholder="Pesquisar por nome...">
-        <button id="search-button" type="submit">Buscar</button>
+        <div style="display: flex; justify-content: space-between">
+            <input type="text" id="search-input" name="filtro-nome" placeholder="Pesquisar por nome...">
+            <button id="search-button" type="submit">Buscar</button>
+        </div>
         <a href="{{ url_for('produtos')}}" type="button" id="reset-button">Redefinir</a>
     </form>
 </div>

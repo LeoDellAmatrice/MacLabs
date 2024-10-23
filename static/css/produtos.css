@@ -18,22 +18,23 @@
     padding: 10px 20px;
     text-align: center;
     border-radius: 0 0 20px 20px;
-}
 
-.hero-section h1 {
-    font-size: 3rem;
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
+    & h1 {
+        font-size: 3rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
 
-.hero-section p {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+    & p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
 }
 
 #barra_pesquisa form {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     align-items: center;
     gap: 10px;
     padding: 20px;
@@ -42,6 +43,11 @@
     margin: 20px auto;
     max-width: 800px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+    & input[type="text"] {
+        width: 100%;
+        max-width: none;
+    }
 }
 
 #search-input {
@@ -67,10 +73,10 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
     text-decoration: none;
+
 }
 
-#search-button:hover,
-#reset-button:hover {
+#search-button:hover, #reset-button:hover {
     background-color: var(--hover-color);
 }
 
@@ -87,15 +93,17 @@
     text-align: center;
 }
 
-.products-header h1 {
-    font-size: 30px;
-    color: var(--text-color);
-}
+.products-header {
 
-.products-header p {
-    font-size: var(--font-size-medium);
-    color: var(--text-color);
-    margin-bottom: 40px;
+    & h1 {
+        font-size: 30px;
+        color: var(--text-color);
+    }
+    & p {
+        font-size: var(--font-size-medium);
+        color: var(--text-color);
+        margin-bottom: 40px;
+    }
 }
 
 .products-container {
@@ -110,35 +118,35 @@
     border-radius: 10px;
     padding: 20px;
     text-align: center;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     max-width: 300px;
     transition: transform 0.3s ease, background-color 0.3s ease;
+
+    & img {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 15px;
+    }
+
+    & h2 {
+        font-size: var(--font-size-large);
+        color: var(--text-color);
+        margin: 10px 0;
+    }
+
+    & button {
+        background-color: var(--button-bg-color);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
 }
 
 .product-card:hover {
     transform: scale(1.05);
-}
-
-.product-card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 15px;
-}
-
-.product-card h2 {
-    font-size: var(--font-size-large);
-    color: var(--text-color);
-    margin: 10px 0;
-}
-
-.product-card button {
-    background-color: var(--button-bg-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .product-card button:hover {
@@ -153,4 +161,29 @@
         padding: 20px;
     }
 
+    #barra_pesquisa{
+
+        & input {
+            font-size: var(--font-size-small);
+        }
+        & a {
+            font-size: var(--font-size-small);
+        }
+        & button {
+            font-size: var(--font-size-small);
+        }
+    }
+}
+
+@media (max-width: 380px) {
+    #barra_pesquisa form {
+
+        & button {
+
+        }
+
+        & input, a, button {
+
+        }
+    }
 }

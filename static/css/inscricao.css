@@ -16,7 +16,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 40px;
+    margin: 40px 0;
 }
 
 .formInscricao {
@@ -104,6 +104,36 @@
     background-color: var(--hover-color);
 }
 
+.checkbox-container {
+    display: flex;
+    gap: 10px;
+    background-color: var(--secondary-bg-color);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+}
+
+.checkbox-container input[type="checkbox"] {
+    accent-color: var(--hover-color); /* Cor do checkbox quando marcado */
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    font-size: var(--font-size-medium);
+    color: var(--text-color);
+    cursor: pointer;
+    user-select: none; /* Previne a seleção do texto ao clicar */
+}
+
+/* Ajuste de aparência quando o checkbox está em foco */
+.checkbox-container input[type="checkbox"]:focus {
+    outline: 2px solid var(--hover-color);
+    outline-offset: 2px;
+}
+
 /* Responsividade */
 @media (max-width: 480px) {
     .formInscricao {
@@ -124,5 +154,19 @@
 
     .formInscricao button {
         font-size: var(--font-size-small);
+    }
+
+        .checkbox-container {
+        padding: 8px;
+        gap: 5px;
+    }
+
+    .checkbox-container label {
+        font-size: var(--font-size-small);
+    }
+
+    .checkbox-container input[type="checkbox"] {
+        width: 16px;
+        height: 16px;
     }
 }
