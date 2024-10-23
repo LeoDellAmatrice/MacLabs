@@ -25,7 +25,7 @@ MacLabs Inscrição
             <label for ="file">Selecione uma imagem de perfil</label>
             <input type="file" id="file" name="file" accept=".png">
             -->
-            <button type="submit" onclick="cadastrar()">Cadastrar</button>
+            <button type="submit">Cadastrar</button>
         </form>
     </div>
 {% endblock %}
@@ -37,14 +37,15 @@ MacLabs Inscrição
     });
 
     document.getElementById('inscricao-form').addEventListener('submit', function(event) {
-       event.preventDefault();
-       const usuario = document.getElementById('usuario').value;
-       window.localStorage.setItem('usuario', usuario);
+        event.preventDefault();
+       if (document.getElementById('usuario').value !== ""){
+           const usuario = document.getElementById('usuario').value;
+           window.localStorage.setItem('usuario', usuario);
+           window.location.href = "/"
+       } else {
+           alert('Preencha o campo de usuário!');
+       }
     });
-
-    function cadastrar(){
-        window.location.href = "/"
-    }
 
 </script>
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>

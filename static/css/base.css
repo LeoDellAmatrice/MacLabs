@@ -56,7 +56,7 @@ body {
     background-color: var(--primary-bg-color);
     margin: 0;
     padding: 0;
-    font-family: barlow, sans-serif;
+    font-family: barlow, sans-serif !important;
     display: none;
 }
 
@@ -105,6 +105,21 @@ header img {
     flex-wrap: wrap;
     font-size: var(--font-size-medium);
     gap: 10px;
+}
+
+#nav-buttons-logado {
+    display: flex;
+    align-items: center;
+}
+
+#nav-buttons-logado p {
+    margin: 0 10px 0 0;
+    font-size: 24px;
+}
+
+#nav-buttons-logado img {
+    width: 50px;
+    height: auto;
 }
 
 .button {

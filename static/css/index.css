@@ -93,7 +93,7 @@
     background-color: #2d8ef1;
 }
 
-.call-to-action {
+#call-to-action {
     background-color: #353535;
     padding: 40px 20px;
     text-align: center;
@@ -102,17 +102,17 @@
     color: #fff;
 }
 
-.call-to-action h2 {
+#call-to-action h2 {
     font-size: 2.5rem;
     margin-bottom: 10px;
 }
 
-.call-to-action p {
+#call-to-action p {
     font-size: 1.2rem;
     margin-bottom: 20px;
 }
 
-.call-to-action .cta-button {
+#call-to-action .cta-button {
     margin: 5px;
 }
 
