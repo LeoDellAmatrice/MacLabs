@@ -110,16 +110,18 @@ header img {
 #nav-buttons-logado {
     display: flex;
     align-items: center;
-}
 
-#nav-buttons-logado p {
-    margin: 0 10px 0 0;
-    font-size: 24px;
-}
+    & p {
+        color: #ffffff;
+        margin: 0 10px 0 0;
+        font-size: 24px;
+    }
 
-#nav-buttons-logado img {
-    width: 50px;
-    height: auto;
+    & img {
+        width: 50px;
+        height: auto;
+    }
+
 }
 
 .button {
