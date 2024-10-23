@@ -71,47 +71,47 @@ header {
     & img {
         height: 60px;
     }
+}
 
-    & #nav-menu {
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        flex-wrap: wrap;
-        min-width: 120px;
+#nav-menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    min-width: 120px;
 
-        & a {
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: var(--font-size-large);
-            font-weight: bold;
-            margin: 0 10px 8px;
-            transition: color 300ms;
+    & a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-size: var(--font-size-large);
+        font-weight: bold;
+        margin: 0 10px 8px;
+        transition: color 300ms;
 
-            &:hover {
-                color: var(--hover-color);
-            }
+        &:hover {
+            color: var(--hover-color);
         }
     }
+}
 
-    & #nav-buttons, & #nav-buttons-logado {
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        font-size: var(--font-size-medium);
-        gap: 10px;
+#nav-buttons, & #nav-buttons-logado {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: var(--font-size-medium);
+    gap: 10px;
+}
+
+#nav-buttons-logado {
+    & p {
+        color: var(--text-color);
+        margin-right: 10px;
+        font-size: 24px;
     }
 
-    & #nav-buttons-logado {
-        & p {
-            color: var(--text-color);
-            margin-right: 10px;
-            font-size: 24px;
-        }
-
-        & img {
-            width: 50px;
-            height: auto;
-        }
+    & img {
+        width: 50px;
+        height: auto;
     }
 }
 
@@ -142,12 +142,6 @@ footer {
     background-color: var(--secondary-bg-color);
     padding: 10px 20px;
     color: var(--text-color);
-
-    #footer-principal {
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-    }
 
     hr {
         width: 100%;
@@ -209,6 +203,12 @@ footer {
         }
     }
 }
+
+#footer-principal {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
 /* ================= MEDIA QUERIES ================= */
 
 /* Tela até 950px */
@@ -238,6 +238,7 @@ footer {
 /* Tela até 780px */
 @media (max-width: 760px) {
     #footer-principal {
+        display: grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 10px;
     }
