@@ -31,7 +31,8 @@ MacLabs Produtos
         {% endif %}
         {% for produto in produtos %}
             <div class="product-card">
-                <img src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
+                <img id="img-produto" src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
+                <img onclick="alert('Produto favoritado')" id="img-fav" src="{{ url_for('static', filename='img/eng_vermelha.svg') }}" alt="Favoritar">
                 <h2>{{ produto.nome }}</h2>
                 <button>Saiba Mais</button>
             </div>

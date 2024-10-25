@@ -4,10 +4,10 @@ import re
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
-lista_produtos: [str, str] = [
+lista_produtos = [
         {'nome': 'Prato para vaso', 'imagem': 'img/produtos/pote_flor.svg'},
         {'nome': 'Caixa empilhavel', 'imagem': 'img/produtos/caixa_empilhavel.svg'},
-        {'nome': 'Dispenser de pilhas AA e AAA', 'imagem': 'img/produtos/dispenser_pilha.png'},
+        {'nome': 'Dispenser de pilhas', 'imagem': 'img/produtos/dispenser_pilha.png'},
         {'nome': 'Funil', 'imagem': 'img/produtos/funil.png'},
         {'nome': 'Garfo', 'imagem': 'img/produtos/garfo.png'},
         {'nome': 'Mesas e cadeiras', 'imagem': 'img/produtos/mesas_cadeiras.png'},

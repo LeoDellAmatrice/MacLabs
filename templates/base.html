@@ -15,9 +15,11 @@
 <body>
     <header>
         <!-- Logo -->
-        <a href="{{ url_for('index') }}">
-            <img id="img-logo" src="{{url_for('static', filename='img/logo1.svg')}}" alt="Logo MacLabs">
-        </a>
+        <div id="div-logo">
+            <a href="{{ url_for('index') }}">
+                <img id="img-logo" src="{{url_for('static', filename='img/logo1.svg')}}" alt="Logo MacLabs">
+            </a>
+        </div>
         <!-- Menu de navegação -->
         <nav id="nav-menu">
             <a href="{{ url_for('produtos') }}">Produtos</a>
