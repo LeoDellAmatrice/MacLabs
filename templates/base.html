@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 </head>
 <body>
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
     <header>
         <!-- Logo -->
         <a href="{{ url_for('index') }}">
@@ -35,20 +32,22 @@
         </div>
         <div id="nav-buttons-logado">
             <p id="usuario-logado"></p>
-            <img id="img-login" onclick="desconectar()" src="{{ url_for('static', filename='img/perfil.png') }}">
+            <img id="img-login" onclick="login_menu()" src="{{ url_for('static', filename='img/perfil.png') }}">
         </div>
     </header>
-
     <main>
+        <div id="login-menu">
+            <p id="usuario-logado-menu"></p>
+            <a href="{{ url_for('produtos') }}">Ver Carrinho</a>
+            <button onclick="desconectar()" >Desconectar</button>
+        </div>
         {% block content %}{% endblock %}
     </main>
 
     <footer>
         <div id="footer-principal">
             <!-- Logo -->
-            <div id="logo-completa">
-                <img src="{{url_for('static', filename='img/logocompleta.svg')}}" alt="Logo completa MacLabs">
-            </div>
+            <img id="logo-completa" src="{{url_for('static', filename='img/logocompleta.svg')}}" alt="Logo completa MacLabs">
             <!-- contato -->
             <div id="contato">
                 <h3>Contato</h3>
@@ -103,7 +102,9 @@
 
     if (usuarioLocalStorage != null) {
         const usuario_logado = document.getElementById("usuario-logado");
+        const usuario_logado_menu = document.getElementById("usuario-logado-menu");
         usuario_logado.textContent = usuarioLocalStorage
+        usuario_logado_menu.textContent = "Usuario: " + usuarioLocalStorage;
         div_usuario_logado.style.display = "flex";
         div_usuario_nao_logado.style.display = "none";
         call.style.display = "none";
@@ -111,6 +112,12 @@
         div_usuario_nao_logado.style.display = "flex";
         div_usuario_logado.style.display = "none";
         call.style.display = "block";
+    }
+
+    function login_menu(){
+        const menu = document.getElementById('login-menu');
+        menu.classList.toggle('open');
+        this.classList.toggle('open');
     }
 
     function desconectar() {
