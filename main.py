@@ -238,7 +238,7 @@ def produtos():
         nome_produto = request.form.get('produto')
         for item in lista_produtos:
             if item['nome'] == nome_produto:
-                item['favorito'] = not item['favorito']
+                item['favorito'] = True
                 return redirect('carrinho')
     return render_template('produtos.html', produtos=lista_produtos)
 
@@ -260,7 +260,7 @@ def carrinho():
         nome_produto = request.form.get('produto')
         for item in lista_produtos:
             if item['nome'] == nome_produto:
-                item['favorito'] = not item['favorito']
+                item['favorito'] = False
                 return redirect('carrinho')
 
     for randon in range(quantidade_itens_recomendados):
