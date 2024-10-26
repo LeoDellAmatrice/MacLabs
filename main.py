@@ -56,7 +56,7 @@ lista_produtos = [
         'nome': 'Garfo',
         'imagem': 'img/produtos/garfo.png',
         'preco': '15.00',
-        'favorito': True,
+        'favorito': False,
         'peso': '30g',
         'material': 'PLA',
         'densidade': '10%',
@@ -140,7 +140,7 @@ lista_produtos = [
         'nome': 'Chave de boca ajustável',
         'imagem': 'img/produtos/chave_de_boca_ajustavel.png',
         'preco': '22.00',
-        'favorito': True,
+        'favorito': False,
         'peso': '100g',
         'material': 'ABS',
         'densidade': '25%',
@@ -184,6 +184,42 @@ lista_produtos = [
         'tags': ['utilidades', 'escritório'],
         'descricao': 'Suporte para celular prático e moderno, ideal para mesas de escritório.'
     },
+    {
+        'nome': 'Coelho',
+        'imagem': 'img/produtos/coelho.png',
+        'preco': '32.00',
+        'favorito': False,
+        'peso': '180g',
+        'material': 'PLA',
+        'densidade': '15%',
+        'dimensoes': '12cm x 8cm x 10cm',
+        'estoque': 14,
+        'tags': ['decoração', 'brinquedos']
+    },
+    {
+        'nome': 'Foguete',
+        'imagem': 'img/produtos/foguete.png',
+        'preco': '55.00',
+        'favorito': False,
+        'peso': '400g',
+        'material': 'ABS',
+        'densidade': '25%',
+        'dimensoes': '25cm x 8cm x 8cm',
+        'estoque': 4,
+        'tags': ['brinquedos', 'decoração']
+    },
+    {
+        'nome': 'Anel de gato',
+        'imagem': 'img/produtos/anel_de_gato.png',
+        'preco': '12.00',
+        'favorito': False,
+        'peso': '20g',
+        'material': 'PLA',
+        'densidade': '10%',
+        'dimensoes': '3cm x 3cm x 0.5cm',
+        'estoque': 40,
+        'tags': ['acessórios', 'moda']
+    }
 ]
 
 recomendacoes = [

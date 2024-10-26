@@ -32,7 +32,7 @@ MacLabs Inscrição
                 <h3>{{ recomenda.nome }}</h3>
                 <p>Preço: R$ {{ recomenda.preco }}</p>
             </div>
-            <a href="{{ url_for('produtos') }}" class="comprar">Ver mais</a>
+            <a href="/produtos/{{recomenda.nome}}" class="comprar">Ver mais</a>
         </div>
         {% endfor %}
     </div>
