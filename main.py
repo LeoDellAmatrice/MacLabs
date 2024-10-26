@@ -232,23 +232,36 @@ def index():
     return render_template('index.html', produtos=lista_produtos)
 
 
-@app.route('/produtos')
+@app.route('/produtos', methods=["GET", "POST"])
 def produtos():
+    if request.method == "POST":
+        nome_produto = request.form.get('produto')
+        for item in lista_produtos:
+            if item['nome'] == nome_produto:
+                item['favorito'] = not item['favorito']
+                return redirect('carrinho')
     return render_template('produtos.html', produtos=lista_produtos)
 
 
-@app.route('/produtos/<nome_produto>')
+@app.route('/produtos/<nome_produto>', methods=["GET"])
 def produto_especifico(nome_produto):
-    for item in lista_produtos:
-        if item['nome'] == nome_produto:
-            return render_template('produto.html', produto=item)
-    return redirect(url_for('index'))
+    if request.method == "GET":
+        for item in lista_produtos:
+            if item['nome'] == nome_produto:
+                return render_template('produto.html', produto=item)
 
 
 @app.route('/carrinho', methods=["GET", "POST"])
 def carrinho():
     recomendacoes = []
     lista_carrinho = []
+
+    if request.method == "POST":
+        nome_produto = request.form.get('produto')
+        for item in lista_produtos:
+            if item['nome'] == nome_produto:
+                item['favorito'] = not item['favorito']
+                return redirect('carrinho')
 
     for randon in range(quantidade_itens_recomendados):
         recomendacoes.append(random.choice(lista_produtos))

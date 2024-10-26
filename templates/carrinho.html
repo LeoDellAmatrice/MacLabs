@@ -24,7 +24,10 @@ MacLabs Carrinho
                 <h3>{{ item.nome }}</h3>
                 <p>Preço: R$ {{ item.preco }}</p>
             </div>
-            <button class="remover-item"  >Remover</button>
+            <form action="{{ url_for('carrinho') }}" method="POST">
+                <input type="hidden" name="produto" value="{{ item.nome }}">
+                <button class="remover-item"  >Remover</button>
+            </form>
         </div>
         {% endfor %}
     </div>
