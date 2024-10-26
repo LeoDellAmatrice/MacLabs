@@ -1,17 +1,3 @@
-/* Variáveis globais */
-:root {
-    --primary-bg-color: #353535;
-    --secondary-bg-color: #252525;
-    --button-bg-color: #505050;
-    --hover-color: #2d8ef1;
-    --text-color: #ffffff;
-    --input-bg-color: #454545;
-    --input-border-color: #808080;
-    --font-size-large: 20px;
-    --font-size-medium: 15px;
-    --font-size-small: 10px;
-}
-
 /* Estilo do container */
 .container {
     display: flex;

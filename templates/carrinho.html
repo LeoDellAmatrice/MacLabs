@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MacLabs Carrinho
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/carrinho.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <h1>Produtos</h1>
+    <p>Descubra itens impressos em 3D com precisão e qualidade.</p>
+</section>
+<div id="carrinho-container">
+    <h2>Carrinho</h2>
+    <div id="carrinho-itens">
+        <!-- Adicionar os itens do carrinho aqui -->
+        {% for item in carrinho %}
+        <div class="carrinho-item">
+            <img src="{{ url_for('static', filename=item.imagem) }}" alt="{{ item.nome }}">
+            <div class="item-info">
+                <h3>{{ item.nome }}</h3>
+                <p>Preço: R$ {{ item.preco }}</p>
+            </div>
+            <button class="remover-item"  >Remover</button>
+        </div>
+        {% endfor %}
+    </div>
+    <div id="carrinho-total">
+        <h3>Total</h3>
+        <p>R$: {{ valorTotal }}</p>
+    </div>
+    <div id="carrinho-botoes">
+        <a href="{{ url_for('produtos') }}" class="continuar-comprando">Continuar Comprando</a>
+        <button id="finalizar-compra">Finalizar Compra</button>
+    </div>
+</div>
+{% endblock %}

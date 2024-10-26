@@ -11,6 +11,8 @@
     --font-size-medium: 20px;
     --font-size-small: 15px;
     --font-size-extra-small: 17px;
+    --input-bg-color: #454545;
+    --input-border-color: #808080;
 }
 
 /* Estilização da barra de rolagem */
@@ -56,7 +58,27 @@ body {
     }
 }
 
-h1, h2, h3, p, li {
+.hero-section {
+    background: linear-gradient(to right, #1c588f, #5195e8);
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
+
+    & h1 {
+        font-size: 3rem;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    & p {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+}
+
+
+h1, h2, h3, p, li, button {
     font-family: "barlow", serif;
 }
 

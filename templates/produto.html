@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ produto.nome }} - MacLabs
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/produto.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="hero-section">
+    <h1>{{ produto.nome }}</h1>
+    <p>{{ produto.descricao }}</p>
+</section>
+
+<div class="produto-detalhes-container">
+    <div class="produto-imagem">
+        <img src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
+    </div>
+    <div class="produto-info">
+        <h2>{{ produto.nome }}</h2>
+        <p>Preço: ${{ produto.preco }}</p>
+        <p>{{ produto.descricao_completa }}</p>
+        <ul class="especificacoes">
+            {% if produto.peso %}
+            <li>Peso: {{ produto.peso }}</li>
+            {% endif %}
+
+            {% if produto.material %}
+            <li>Material: {{ produto.material }}</li>
+            {% endif %}
+
+            {% if produto.densidade %}
+            <li>Densidade: {{ produto.densidade }}</li>
+            {% endif %}
+
+            {% if produto.dimensoes %}
+            <li>Dimensões: {{ produto.dimensoes }}</li>
+            {% endif %}
+
+            {% if produto.tags %}
+            <li>Tags: {{ produto.tags | join(', ') }}.</li>
+            {% endif %}
+        </ul>
+        <div class="produto-actions">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" value="1" min="1">
+            <button class="adicionar-carrinho">Adicionar ao Carrinho</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}
