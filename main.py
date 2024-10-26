@@ -1,7 +1,11 @@
 from flask import Flask, redirect, url_for, render_template, request
+import random
 import re
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/uploads'
+
+# Variaveis #
+quantidade_itens_recomendados: int = 5
 
 lista_produtos = [
     {
@@ -222,45 +226,6 @@ lista_produtos = [
     }
 ]
 
-recomendacoes = [
-    {
-        'nome': 'Coelho',
-        'imagem': 'img/produtos/coelho.png',
-        'preco': '32.00',
-        'favorito': False,
-        'peso': '180g',
-        'material': 'PLA',
-        'densidade': '15%',
-        'dimensoes': '12cm x 8cm x 10cm',
-        'estoque': 14,
-        'tags': ['decoração', 'brinquedos']
-    },
-    {
-        'nome': 'Foguete',
-        'imagem': 'img/produtos/foguete.png',
-        'preco': '55.00',
-        'favorito': False,
-        'peso': '400g',
-        'material': 'ABS',
-        'densidade': '25%',
-        'dimensoes': '25cm x 8cm x 8cm',
-        'estoque': 4,
-        'tags': ['brinquedos', 'decoração']
-    },
-    {
-        'nome': 'Anel de gato',
-        'imagem': 'img/produtos/anel_de_gato.png',
-        'preco': '12.00',
-        'favorito': False,
-        'peso': '20g',
-        'material': 'PLA',
-        'densidade': '10%',
-        'dimensoes': '3cm x 3cm x 0.5cm',
-        'estoque': 40,
-        'tags': ['acessórios', 'moda']
-    }
-]
-
 
 @app.route('/')
 def index():
@@ -282,12 +247,19 @@ def produto_especifico(nome_produto):
 
 @app.route('/carrinho', methods=["GET", "POST"])
 def carrinho():
+    recomendacoes = []
     lista_carrinho = []
+
+    for randon in range(quantidade_itens_recomendados):
+        recomendacoes.append(random.choice(lista_produtos))
+
     for item in lista_produtos:
         if item['favorito']:
             lista_carrinho.append(item)
+
     if not lista_carrinho:
         return render_template('carrinho_vazio.html', recomendacoes=recomendacoes)
+
     return render_template('carrinho.html', carrinho=lista_carrinho, valorTotal=valor_total(lista_carrinho))
 
 
