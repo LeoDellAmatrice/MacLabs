@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
 # Variaveis #
-quantidade_itens_recomendados: int = 5
+quantidade_itens_recomendados: int = 45
 
 lista_produtos = [
     {
