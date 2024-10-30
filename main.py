@@ -248,8 +248,7 @@ lista_produtos = [
         'estoque': 50,
         'tags': ['acessórios', 'moda'],
         'descricao': 'Anel estiloso em formato de gato, ideal para amantes de felinos.'
-    }
-]
+    }]
 
 context = (
     f"Você é o chatbot da MacLabs, especializado em guiar usuários no site e responder perguntas sobre nossos produtos e serviços de impressão 3D."
