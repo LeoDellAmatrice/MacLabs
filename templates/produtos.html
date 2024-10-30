@@ -15,11 +15,23 @@ MacLabs Produtos
 </section>
 <div id="barra_pesquisa">
     <form action="{{ url_for('produtos_filtrados') }}" method="GET">
-        <div style="display: flex; justify-content: space-between">
+        <div class="search-box">
             <input type="text" id="search-input" name="filtro-nome" placeholder="Pesquisar por nome...">
             <button id="search-button" type="submit">Buscar</button>
+            <a href="{{ url_for('produtos')}}" type="button" id="reset-button">Redefinir</a>
         </div>
-        <a href="{{ url_for('produtos')}}" type="button" id="reset-button">Redefinir</a>
+
+        <div class="filter-tags">
+            <span>Filtros:</span>
+            <label><input type="checkbox" name="tag" value="decoracao"> Decoração</label>
+            <label><input type="checkbox" name="tag" value="armazenamento"> Armazenamento</label>
+            <label><input type="checkbox" name="tag" value="organizacao"> Organizacao</label>
+            <label><input type="checkbox" name="tag" value="brinquedos"> Brinquedos</label>
+            <label><input type="checkbox" name="tag" value="ferramentas"> Ferramentas</label>
+            <label><input type="checkbox" name="tag" value="escritorio"> Escritório</label>
+            <label><input type="checkbox" name="tag" value="jardim"> Jardim</label>
+            <!-- Adicione mais tags conforme necessário -->
+        </div>
     </form>
 </div>
 <section class="products-section">
@@ -31,6 +43,7 @@ MacLabs Produtos
             <div class="product-card">
                 <img id="img-produto" src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
                 <h2>{{ produto.nome }}</h2>
+                <h3>R${{  produto.preco  }}</h3>
                 <a href="produtos/{{produto.nome}}" class="botao" >Saiba Mais</a>
             </div>
         {% endfor %}

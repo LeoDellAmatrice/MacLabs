@@ -25,7 +25,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '20cm x 20cm x 2cm',
         'estoque': 10,
-        'tags': ['jardim', 'decoração', 'vasos'],
+        'tags': ['decoracao', 'jardim'],
         'descricao': 'Prato para vaso de plantas, ideal para manter a água e evitar sujeira em sua casa.'
     },
     {
@@ -38,7 +38,7 @@ lista_produtos = [
         'densidade': '30%',
         'dimensoes': '30cm x 20cm x 15cm',
         'estoque': 5,
-        'tags': ['organização', 'caixas', 'armazenamento'],
+        'tags': ['armazenamento', 'organizacao'],
         'descricao': 'Caixa empilhável resistente, ideal para organizar e armazenar objetos.'
     },
     {
@@ -51,7 +51,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 5cm x 5cm',
         'estoque': 15,
-        'tags': ['organização', 'eletrônicos'],
+        'tags': ['organizacao'],
         'descricao': 'Dispenser prático para armazenar e organizar pilhas AA e AAA.'
     },
     {
@@ -64,7 +64,7 @@ lista_produtos = [
         'densidade': '15%',
         'dimensoes': '15cm x 10cm x 10cm',
         'estoque': 20,
-        'tags': ['cozinha', 'utensílios'],
+        'tags': [],
         'descricao': 'Funil de plástico resistente, perfeito para transferência de líquidos na cozinha.'
     },
     {
@@ -77,7 +77,7 @@ lista_produtos = [
         'densidade': '10%',
         'dimensoes': '18cm x 3cm x 1cm',
         'estoque': 50,
-        'tags': ['cozinha', 'utensílios'],
+        'tags': [],
         'descricao': 'Garfo impresso em 3D, ideal para uso diário ou em piqueniques.'
     },
     {
@@ -90,7 +90,7 @@ lista_produtos = [
         'densidade': '40%',
         'dimensoes': '60cm x 60cm x 80cm',
         'estoque': 2,
-        'tags': ['móveis', 'decoração'],
+        'tags': ['decoracao'],
         'descricao': 'Conjunto de mesa e cadeiras, perfeito para decoração de interiores e espaços compactos.'
     },
     {
@@ -103,7 +103,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 10cm x 12cm',
         'estoque': 25,
-        'tags': ['escritório', 'organização'],
+        'tags': ['organizacao', 'escritorio'],
         'descricao': 'Porta lápis moderno para organizar sua mesa de escritório com estilo.'
     },
     {
@@ -116,7 +116,7 @@ lista_produtos = [
         'densidade': '25%',
         'dimensoes': '12cm x 12cm x 1cm',
         'estoque': 30,
-        'tags': ['brinquedos', 'decoração'],
+        'tags': ['decoracao', 'brinquedos'],
         'descricao': 'Shuriken decorativa, ideal para fãs de cultura oriental e artes marciais.'
     },
     {
@@ -129,7 +129,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '15cm x 10cm x 10cm',
         'estoque': 8,
-        'tags': ['decoração', 'brinquedos'],
+        'tags': ['decoracao', 'brinquedos'],
         'descricao': 'Miniatura de elefante impresso em 3D, ótimo para decoração e colecionadores.'
     },
     {
@@ -142,7 +142,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 10cm x 8cm',
         'estoque': 10,
-        'tags': ['decoração', 'brinquedos'],
+        'tags': ['decoracao', 'brinquedos'],
         'descricao': 'Sapo decorativo impresso em 3D, ideal para coleções ou decoração temática.'
     },
     {
@@ -155,7 +155,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '12cm x 8cm x 10cm',
         'estoque': 12,
-        'tags': ['decoração', 'brinquedos'],
+        'tags': ['decoracao', 'brinquedos'],
         'descricao': 'Figura de gato impresso em 3D, um toque especial para sua decoração.'
     },
     {
@@ -168,7 +168,7 @@ lista_produtos = [
         'densidade': '25%',
         'dimensoes': '20cm x 5cm x 2cm',
         'estoque': 18,
-        'tags': ['ferramentas', 'utilidades'],
+        'tags': ['ferramentas'],
         'descricao': 'Chave de boca ajustável funcional, ideal para pequenos reparos.'
     },
     {
@@ -181,7 +181,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '30cm x 10cm x 5cm',
         'estoque': 7,
-        'tags': ['brinquedos', 'decoração'],
+        'tags': ['decoracao', 'brinquedos'],
         'descricao': 'Modelo de tubarão articulado, perfeito para decoração e coleções.'
     },
     {
@@ -194,7 +194,7 @@ lista_produtos = [
         'densidade': '30%',
         'dimensoes': '15cm x 10cm x 8cm',
         'estoque': 6,
-        'tags': ['brinquedos', 'engenharia'],
+        'tags': ['brinquedos'],
         'descricao': 'Mini catapulta funcional, excelente para entusiastas de engenharia.'
     },
     {
@@ -207,7 +207,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 8cm x 5cm',
         'estoque': 20,
-        'tags': ['utilidades', 'escritório'],
+        'tags': ['escritorio'],
         'descricao': 'Suporte para celular prático e moderno, ideal para mesas de escritório.'
     },
     {
@@ -220,7 +220,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '15cm x 8cm x 10cm',
         'estoque': 10,
-        'tags': ['brinquedos', 'decoração'],
+        'tags': ['brinquedos', 'decoracao'],
         'descricao': 'Figura decorativa de coelho, perfeita para decorações temáticas e coleções.'
     },
     {
@@ -233,7 +233,7 @@ lista_produtos = [
         'densidade': '25%',
         'dimensoes': '25cm x 10cm x 10cm',
         'estoque': 4,
-        'tags': ['brinquedos', 'decoração', 'aeroespacial'],
+        'tags': ['brinquedos', 'decoracao'],
         'descricao': 'Modelo de foguete impresso em 3D, ideal para decoração de temas espaciais.'
     },
     {
@@ -246,9 +246,11 @@ lista_produtos = [
         'densidade': '15%',
         'dimensoes': '2cm x 2cm x 0.5cm',
         'estoque': 50,
-        'tags': ['acessórios', 'moda'],
+        'tags': ['brinquedos'],
         'descricao': 'Anel estiloso em formato de gato, ideal para amantes de felinos.'
-    }]
+    }
+]
+
 
 context = (
     f"Você é o chatbot da MacLabs, especializado em guiar usuários no site e responder perguntas sobre nossos produtos e serviços de impressão 3D."
@@ -318,16 +320,28 @@ def carrinho():
 
 
 @app.route('/produtos-filtrados')
-@cache.cached(timeout=60)
 def produtos_filtrados():
-    filtro = request.args.get('filtro-nome')
+    filtro_nome = request.args.get('filtro-nome', '').strip().lower()
+    filtro_tag = request.args.get('tag', '').strip().lower()
     lista_filtrada = []
-    for produto in lista_produtos:
-        if re.search(filtro.lower(), produto.get('nome').lower()):
-            lista_filtrada.append(produto)
 
+    # Quando ambos os filtros estão vazios, exibe todos os produtos
+    if not filtro_nome and not filtro_tag:
+        lista_filtrada = lista_produtos
+    else:
+        # Filtragem de acordo com os parâmetros inseridos
+        for produto in lista_produtos:
+            nome_corresponde = re.search(filtro_nome, produto.get('nome', '').lower()) if filtro_nome else True
+            tag_corresponde = filtro_tag in (produto.get('tags') or []) if filtro_tag else True
+
+            # Adiciona o produto se corresponder aos critérios ativos
+            if nome_corresponde and tag_corresponde:
+                lista_filtrada.append(produto)
+
+    # Renderiza a mensagem se nenhum produto foi encontrado
     if not lista_filtrada:
         return render_template('produtos.html', produtos=[], mensagem="Nenhum produto encontrado")
+
     return render_template('produtos.html', produtos=lista_filtrada)
 
 
