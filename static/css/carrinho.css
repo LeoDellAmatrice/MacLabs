@@ -25,6 +25,7 @@
     border-radius: 10px;
     padding: 10px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
@@ -134,18 +135,44 @@
 }
 
 /* Responsividade */
+@media (max-width: 768px) {
+
+    .carrinho-item img {
+        margin: 0 10px 10px 0; /* Ajusta a margem para dar espaço abaixo da imagem */
+    }
+
+    .item-info {
+        margin-bottom: 10px; /* Adiciona espaço entre a informação e os botões */
+    }
+}
+
 @media (max-width: 500px) {
-
-    .carrinho-item, .recomendacao-item {
-        text-align: center;
-        flex-direction: column;
+    .carrinho-item img {
+        height: 60px;
     }
 
-    .carrinho-item img, .recomendacao-item img {
-        margin: 0;
+    .item-info h3 {
+        font-size: var(--font-size-medium);
     }
 
-    #carrinho-botoes {
+    .item-info p {
+        font-size: var(--font-size-small);
+    }
+
+    .item-acoes {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 350px) {
+    .item-info h3, .item-info p {
+        font-size: var(--font-size-small); /* Ajusta para tamanhos de tela muito pequenos */
+    }
+
+    .item-acoes {
         flex-direction: column;
+        gap: 5px; /* Adiciona um espaçamento entre os botões */
     }
 }

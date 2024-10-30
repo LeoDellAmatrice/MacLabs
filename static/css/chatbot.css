@@ -1,0 +1,125 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.chat-container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 70%;
+    max-height: 800px;
+    min-height: 500px;
+    background-color: var(--primary-bg-color);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; /* Para garantir que o conteúdo não extrapole */
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--hover-color);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.5rem;
+
+    & img {
+        height: 40px;
+        width: 40px;
+        object-fit: cover;
+    }
+}
+
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto; /* Rolagem interna */
+    background-color: var(--secondary-bg-color);
+}
+
+.message {
+    font-size: 20px;
+    margin: 10px 20px;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 75%;
+    word-wrap: break-word;
+}
+
+.message.user {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+}
+
+.message.bot {
+    background-color: var(--primary-bg-color);
+    color: white;
+    align-self: flex-start;
+}
+
+.chat-input {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background-color: var(--hover-color);
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.chat-input button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3;
+}
+
+.message.bot span {
+    white-space: pre-wrap;   /* Mantém quebras de linha */
+    word-wrap: break-word;   /* Quebra palavras longas */
+    overflow-wrap: break-word; /* Alternativa moderna */
+}
+
+@media (max-width: 540px) {
+    .chat-container {
+        width: 90%;
+    }
+}
+
+@media (max-width: 380px) {
+    .chat-container {
+        width: 100%;
+    }
+    .chat-header {
+        & h2 {
+            font-size: 27px;
+        }
+
+        & img {
+            width: 25px;
+            height: 25px;
+        }
+    }
+
+    .message {
+        font-size: 15px;
+    }
+}

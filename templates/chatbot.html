@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MacLabs ChatBot
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/chatbot.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="chat-container">
+    <div class="chat-header">
+        <img class="gear" src="{{ url_for('static', filename='img/eng_vermelha.svg')}}" alt="Engrenagem vermelha">
+        <h2>Chatbot - MacLabs</h2>
+        <img class="gear" src="{{ url_for('static', filename='img/eng_amarela.svg')}}" alt="Engrenagem amarela">
+    </div>
+    <div class="chat-window" id="chatWindow">
+        <div class="message bot">
+            <span>Olá! Como posso ajudar você hoje?</span>
+        </div>
+    </div>
+    <div class="chat-input">
+        <label for="userInput"></label><input
+            type="text"
+            id="userInput"
+            placeholder="Digite sua mensagem e aperte [Enter]"
+            autocomplete="off"
+            onkeypress="checkEnter(event)">
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
+{% endblock %}
