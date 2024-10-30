@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for, render_template, request
-from flask_caching import Cache
 import random
 import re
 from google import generativeai as genai
@@ -8,7 +7,6 @@ import os
 
 load_dotenv()
 app = Flask(__name__)
-cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
 # Variaveis #
@@ -265,13 +263,11 @@ context = (
 
 
 @app.route('/')
-@cache.cached(timeout=60)
 def index():
     return render_template('index.html', produtos=lista_produtos)
 
 
 @app.route('/produtos', methods=["GET", "POST"])
-@cache.cached(timeout=60)
 def produtos():
     if request.method == "POST":
         nome_produto = request.form.get('produto')
@@ -283,7 +279,6 @@ def produtos():
 
 
 @app.route('/produtos/<nome_produto>', methods=["GET"])
-@cache.cached(timeout=60)
 def produto_especifico(nome_produto):
     if request.method == "GET":
         for item in lista_produtos:
@@ -292,7 +287,6 @@ def produto_especifico(nome_produto):
 
 
 @app.route('/carrinho', methods=["GET", "POST"])
-@cache.cached(timeout=60)
 def carrinho():
     recomendacoes = []
     lista_carrinho = []
@@ -318,7 +312,6 @@ def carrinho():
 
 
 @app.route('/produtos-filtrados')
-@cache.cached(timeout=60)
 def produtos_filtrados():
     filtro = request.args.get('filtro-nome')
     lista_filtrada = []
@@ -332,7 +325,6 @@ def produtos_filtrados():
 
 
 @app.route("/login", methods=["GET", "POST"])
-@cache.cached(timeout=60)
 def login():
     if request.method == "GET":
         return render_template('login.html')
@@ -348,7 +340,6 @@ def login():
 
 
 @app.route('/inscricao')
-@cache.cached(timeout=60)
 def inscricao():
     return render_template('inscricao.html')
 
@@ -369,7 +360,6 @@ def search():
 
 
 @app.route('/upload', methods=["GET", "POST"])
-@cache.cached(timeout=60)
 def upload():
     if request.method == "GET":
         return render_template('upload.html')
@@ -381,13 +371,11 @@ def upload():
 
 
 @app.route('/sobre')
-@cache.cached(timeout=60)
 def sobre():
     return render_template('sobre.html')
 
 
 @app.route('/criar')
-@cache.cached(timeout=60)
 def criar():
     return render_template('criar.html')
 
