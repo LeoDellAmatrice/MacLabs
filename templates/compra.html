@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+MacLabs Sandbox
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/compra.css') }}">
+{% endblock %}
+
+{% block content %}
+<section>
+    <h1>Consulta de CEPS</h1> <br><br>
+    <div class="container">
+        <input type="text" id="cep" placeholder="Digite um CEP">
+        <button onclick="endereco()">Pesquisar</button>
+    </div>
+    <div class="resultado-wrapper">
+        <div class="resultado">
+
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block js %}
+<script src="{{ url_for('static', filename='js/cep.js') }}"></script>
+{% endblock %}

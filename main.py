@@ -1,9 +1,9 @@
 from flask import Flask, redirect, url_for, render_template, request
+from google import generativeai as genai
 from flask_caching import Cache
+from dotenv import load_dotenv
 import random
 import re
-from google import generativeai as genai
-from dotenv import load_dotenv
 import os
 
 load_dotenv()
@@ -12,7 +12,7 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
 # Variaveis #
-quantidade_itens_recomendados: int = 45
+quantidade_itens_recomendados: int = 5
 
 lista_produtos = [
     {
@@ -404,6 +404,15 @@ def sobre():
 @cache.cached(timeout=60)
 def criar():
     return render_template('criar.html')
+
+
+@app.route('/comprar')
+def comprar():
+    lista_comprar = []
+    for randon in range(quantidade_itens_recomendados):
+        lista_comprar.append(random.choice(lista_produtos))
+
+    return render_template('compra.html', produtos=lista_comprar)
 
 
 def valor_total(lista):
