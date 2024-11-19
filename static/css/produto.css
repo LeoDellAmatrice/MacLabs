@@ -56,6 +56,16 @@
     display: flex;
     align-items: center;
     gap: 10px;
+
+    & button {
+        background-color: var(--button-bg-color);
+        color: var(--text-color);
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 }
 
 .produto-actions input {
@@ -66,17 +76,7 @@
     color: var(--text-color);
 }
 
-.adicionar-carrinho {
-    background-color: var(--button-bg-color);
-    color: var(--text-color);
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.adicionar-carrinho:hover {
+button:hover {
     background-color: var(--hover-color);
 }
 

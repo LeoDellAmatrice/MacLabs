@@ -17,26 +17,10 @@ MacLabs Carrinho
     <h2>Carrinho</h2>
     <div id="carrinho-itens">
         <!-- Adicionar os itens do carrinho aqui -->
-        {% for item in carrinho %}
-        <div class="carrinho-item">
-            <img src="{{ url_for('static', filename=item.imagem) }}" alt="{{ item.nome }}">
-            <div class="item-info">
-                <h3>{{ item.nome }}</h3>
-                <p>Preço: R$ {{ item.preco }}</p>
-                <p>Quantidade: {{ item.quantidade }} Unidades</p>
-            </div>
-            <div class="item-acoes">
-                <form action="{{ url_for('remover_carrinho') }}" method="POST">
-                    <input type="hidden" name="produto" value="{{ item.nome }}">
-                    <button class="remover-item" type="submit" >Remover</button>
-                </form>
-            </div>
-        </div>
-        {% endfor %}
     </div>
     <div id="carrinho-total">
         <h3>Total</h3>
-        <p>R$: {{ subtotal }}</p>
+        <p id="total" ></p>
     </div>
     <div id="carrinho-botoes">
         <a href="{{ url_for('produtos') }}" class="continuar-comprando">Continuar Comprando</a>
@@ -59,3 +43,96 @@ MacLabs Carrinho
     </div>
 </div>
 {% endblock %}
+
+{% block js %}
+<script>
+    let produtosLocalStorage = window.localStorage.getItem("produtos");
+
+    let total = 0;
+
+    function criar_item() {
+
+        if (produtosLocalStorage != null) {
+
+            produtosLocalStorage = JSON.parse(produtosLocalStorage);
+
+            for (let i = 0; i < produtosLocalStorage.length; i++) {
+                let produto = produtosLocalStorage[i]
+                total += produto.preco * produto.quantidade;
+                const divcarrinho_item = document.createElement("div");
+                divcarrinho_item.classList.add("carrinho-item");
+                const img = document.createElement("img");
+
+                img.src = `static/${produto.imagem}`;
+
+                divcarrinho_item.appendChild(img);
+
+                const divitem_info = document.createElement("div");
+                divitem_info.classList.add("item-info");
+                const h3 = document.createElement("h3");
+                h3.textContent = produto.nome;
+                const p = document.createElement("p");
+                p.textContent = "Preço: R$ " + produto.preco;
+                const p_quanti = document.createElement("p");
+                p_quanti.textContent = "Quantidade: " + produto.quantidade + " Unidades";
+
+                divitem_info.appendChild(h3);
+                divitem_info.appendChild(p);
+                divitem_info.appendChild(p_quanti);
+
+                divcarrinho_item.appendChild(divitem_info);
+
+                const divitenscarrinho = document.getElementById('carrinho-itens')
+
+                divitenscarrinho.appendChild(divcarrinho_item);
+
+                const divacao = document.createElement('div');
+                divacao.classList.add('item-acoes');
+                const form = document.createElement('form');
+                const remover_item = document.createElement('button');
+                remover_item.classList.add('remover-item');
+                remover_item.textContent = 'Remover';
+                remover_item.onclick = remover_do_carrinho.bind(this, produto.nome);
+
+                form.appendChild(remover_item);
+                divacao.appendChild(form);
+
+                divcarrinho_item.appendChild(divacao);
+
+            }
+
+        }
+        document.getElementById('total').textContent = `R$: ${total}`
+    }
+    function remover_do_carrinho(nome){
+        for (let i = 0; i < produtosLocalStorage.length; i++){
+            if (produtosLocalStorage[i].nome === nome){
+                produtosLocalStorage.splice(i, 1);
+                window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage));
+                location.reload();
+                break;
+            }
+        }
+    }
+
+    criar_item()
+
+</script>
+{% endblock %}
+
+<!--{% for item in carrinho %}-->
+<!--        <div class="carrinho-item">-->
+<!--            <img src="{{ url_for('static', filename=item.imagem) }}" alt="{{ item.nome }}">-->
+<!--            <div class="item-info">-->
+<!--                <h3>{{ item.nome }}</h3>-->
+<!--                <p>Preço: R$ {{ item.preco }}</p>-->
+<!--                <p>Quantidade: {{ item.quantidade }} Unidades</p>-->
+<!--            </div>-->
+<!--            <div class="item-acoes">-->
+<!--                <form action="{{ url_for('remover_carrinho') }}" method="POST">-->
+<!--                    <input type="hidden" name="produto" value="{{ item.nome }}">-->
+<!--                    <button class="remover-item" type="submit" >Remover</button>-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--{% endfor %}-->

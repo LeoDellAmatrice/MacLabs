@@ -148,11 +148,13 @@ header {
 
     & img {
         width: 50px;
+        cursor: pointer;
         height: auto;
     }
 }
 
 #login-menu {
+    z-index: 100;
     width: 150px;
     display: none;
     flex-direction: column;
@@ -215,8 +217,24 @@ header {
     }
 }
 
+#overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.2); /* Fundo escuro */
+    z-index: 99;
+}
+
+#overlay.active {
+    display: block;
+}
+
 #login-menu.open {
     display: flex;
+    flex-direction: column;
 }
 
 /* Botão */
