@@ -36,7 +36,7 @@ lista_produtos = [
         'peso': '400g',
         'material': 'PETG',
         'densidade': '30%',
-        'dimensoes': '30cm x 20cm x 15cm',
+        'dimensoes': '30cm x 30cm x 15cm',
         'estoque': 5,
         'tags': ['armazenamento', 'organizacao'],
         'descricao': 'Caixa empilhável resistente, ideal para organizar e armazenar objetos.'
@@ -251,6 +251,7 @@ lista_produtos = [
     }
 ]
 
+carrinho = []
 
 context = (
     f"Você é o chatbot da MacLabs, especializado em guiar usuários no site e responder perguntas sobre nossos produtos e serviços de impressão 3D."
@@ -272,16 +273,51 @@ def index():
     return render_template('index.html', produtos=lista_produtos)
 
 
-@app.route('/produtos', methods=["GET", "POST"])
+@app.route('/produtos', methods=["GET"])
 @cache.cached(timeout=60)
 def produtos():
-    if request.method == "POST":
-        nome_produto = request.form.get('produto')
-        for item in lista_produtos:
-            if item['nome'] == nome_produto:
-                item['favorito'] = True
-                return redirect('carrinho')
     return render_template('produtos.html', produtos=lista_produtos)
+
+
+@app.route('/adicionar_carrinho', methods=["POST"])
+def adicionar_carrinho():
+    nome_produto = request.form.get("produto")
+    quantidade = int(request.form.get("quantidade", 1))
+
+    # Simular um carrinho (poderia ser uma sessão, banco de dados etc.)
+    if 'carrinho' not in globals():
+        global carrinho
+        carrinho = []
+
+    # Verificar se o produto já está no carrinho
+    produto_no_carrinho = next((item for item in carrinho if item["nome"] == nome_produto), None)
+
+    if produto_no_carrinho:
+        produto_no_carrinho["quantidade"] += quantidade
+    else:
+        # Procurar o produto na lista de produtos
+        produto = next((p for p in lista_produtos if p["nome"] == nome_produto), None)
+        if produto:
+            # Adicionar ao carrinho com a quantidade
+            carrinho.append({
+                "nome": produto["nome"],
+                "imagem": produto["imagem"],
+                "preco": produto["preco"],
+                "quantidade": quantidade,
+            })
+    return redirect(url_for("exibir_carrinho"))
+
+
+@app.route('/remover_carrinho', methods=["POST"])
+def remover_carrinho():
+    global carrinho
+    nome_produto = request.form.get("produto")
+
+    # Verifica se o carrinho contém o produto e o remove
+    carrinho = [item for item in carrinho if item["nome"] != nome_produto]
+
+    # Redireciona para a página do carrinho
+    return redirect(url_for("exibir_carrinho"))
 
 
 @app.route('/produtos/<nome_produto>', methods=["GET"])
@@ -293,30 +329,25 @@ def produto_especifico(nome_produto):
                 return render_template('produto.html', produto=item)
 
 
-@app.route('/carrinho', methods=["GET", "POST"])
-@cache.cached(timeout=60)
-def carrinho():
-    recomendacoes = []
-    lista_carrinho = []
+@app.route('/exibir_carrinho')
+def exibir_carrinho():
+    global carrinho
+    total = valor_total(carrinho)
+    recomenda_lista = []
+    for item in range(5):
+        recomenda_lista.append(random.choice(lista_produtos))
+    if not carrinho:
+        return render_template('carrinho_vazio.html', recomendacoes=recomenda_lista)
+    return render_template('carrinho.html', carrinho=carrinho, subtotal=total, recomendacoes=recomenda_lista)
 
-    if request.method == "POST":
-        nome_produto = request.form.get('produto')
-        for item in lista_produtos:
-            if item['nome'] == nome_produto:
-                item['favorito'] = False
-                return redirect('carrinho')
 
-    for randon in range(quantidade_itens_recomendados):
-        recomendacoes.append(random.choice(lista_produtos))
-
-    for item in lista_produtos:
-        if item['favorito']:
-            lista_carrinho.append(item)
-
-    if not lista_carrinho:
-        return render_template('carrinho_vazio.html', recomendacoes=recomendacoes)
-
-    return render_template('carrinho.html', carrinho=lista_carrinho, valorTotal=valor_total(lista_carrinho))
+def valor_total(lista):
+    total = 0
+    for produto in lista:
+        preco = float(produto['preco'])  # Certificando-se que o preço é convertido para float
+        quantidade = produto['quantidade']  # Certificando-se que quantidade é numérica
+        total += preco * quantidade
+    return total
 
 
 @app.route('/produtos-filtrados')
@@ -408,18 +439,9 @@ def criar():
 
 @app.route('/comprar')
 def comprar():
-    lista_comprar = []
-    for randon in range(quantidade_itens_recomendados):
-        lista_comprar.append(random.choice(lista_produtos))
+    subtotal = sum(float(item['preco']) * int(item['quantidade']) for item in carrinho)
 
-    return render_template('compra.html', produtos=lista_comprar)
-
-
-def valor_total(lista):
-    total = 0
-    for produto in lista:
-        total += float(produto['preco'])
-    return f"{total:.2f}"
+    return render_template('compra.html', carrinho=carrinho, subtotal=subtotal)
 
 
 if __name__ == '__main__':

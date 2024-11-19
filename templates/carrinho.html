@@ -23,9 +23,10 @@ MacLabs Carrinho
             <div class="item-info">
                 <h3>{{ item.nome }}</h3>
                 <p>Preço: R$ {{ item.preco }}</p>
+                <p>Quantidade: {{ item.quantidade }} Unidades</p>
             </div>
             <div class="item-acoes">
-                <form action="{{ url_for('carrinho') }}" method="POST">
+                <form action="{{ url_for('remover_carrinho') }}" method="POST">
                     <input type="hidden" name="produto" value="{{ item.nome }}">
                     <button class="remover-item" type="submit" >Remover</button>
                 </form>
@@ -35,11 +36,26 @@ MacLabs Carrinho
     </div>
     <div id="carrinho-total">
         <h3>Total</h3>
-        <p>R$: {{ valorTotal }}</p>
+        <p>R$: {{ subtotal }}</p>
     </div>
     <div id="carrinho-botoes">
         <a href="{{ url_for('produtos') }}" class="continuar-comprando">Continuar Comprando</a>
-        <button id="finalizar-compra">Finalizar Compra</button>
+        <a href="{{ url_for('comprar') }}" class="finalizar-compra">Finalizar Compra</a>
+    </div>
+</div>
+<div id="recomendacoes-container">
+    <h2>Recomendações</h2>
+    <div class="recomendacao-itens">
+        {% for recomenda in recomendacoes %}
+        <div class="recomendacao-item">
+            <img src="{{ url_for('static', filename=recomenda.imagem) }}" alt="{{ recomenda.nome }}">
+            <div class="item-info">
+                <h3>{{ recomenda.nome }}</h3>
+                <p>Preço: R$ {{ recomenda.preco }}</p>
+            </div>
+            <a href="/produtos/{{recomenda.nome}}" class="comprar">Ver mais</a>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

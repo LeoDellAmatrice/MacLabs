@@ -1,58 +1,165 @@
-section {
-    max-width: 600px;
-    margin: 20px auto;
+#checkout-container {
+    background-color: var(--secondary-bg-color);
     padding: 20px;
-    background: var(--secondary-bg-color);
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
-h1 {
+#checkout-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--text-color);
+}
+
+#checkout-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.checkout-item {
+    background-color: var(--primary-bg-color);
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.checkout-item:hover {
+    transform: scale(1.02);
+}
+
+.checkout-item img {
+    height: 80px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.item-info {
+    flex-grow: 1;
+}
+
+.item-info h3 {
+    font-size: var(--font-size-large);
+    margin: 0 0 10px;
+    color: var(--text-color);
+}
+
+.item-info p {
+    font-size: var(--font-size-medium);
+    margin: 0 0 10px;
+    color: var(--text-color);
+}
+
+#checkout-totals {
+    background-color: var(--primary-bg-color);
+    padding: 10px;
+    border-radius: 10px;
     text-align: center;
     margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-h3 {
-    font-weight: normal;
-    margin-bottom: 10px;
-    margin-top: 0;
+#checkout-totals p {
+    font-size: 1.5rem;
+    margin: 5px 0;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
+#checkout-totals strong {
+    font-size: 1.8rem;
+    color: var(--hover-color);
 }
 
-input[type="text"] {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 70%;
-    font-size: 16px;
-    margin-right: 10px;
-}
-
-button {
-    padding: 10px 15px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-.resultado-wrapper {
+.shipping-container {
     margin-top: 20px;
-    padding: 10px;
-    border-radius: 4px;
+    text-align: center;
 }
 
-.resultado {
-    font-size: 16px;
+.shipping-container input {
+    padding: 10px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 5px;
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    margin-right: 10px;
+    width: calc(100% - 120px);
+    max-width: 300px;
+}
+
+.shipping-container button {
+    padding: 10px 20px;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shipping-container button:hover {
+    background-color: var(--hover-color);
+}
+
+#frete-resultado {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.checkout-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.finalizar-compra {
+    padding: 10px 20px;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease;
+}
+
+.finalizar-compra:hover {
+    background-color: var(--hover-color);
+}
+
+/* Responsividade */
+@media (max-width: 500px) {
+    .checkout-item img {
+        height: 60px;
+        margin-bottom: 10px;
+    }
+
+    .item-info h3 {
+        font-size: var(--font-size-medium);
+    }
+
+    .item-info p {
+        font-size: var(--font-size-small);
+    }
+
+    #checkout-container {
+        padding: 15px;
+    }
+
+    .shipping-container input {
+        width: calc(100% - 80px);
+    }
+}
+
+@media (max-width: 350px) {
+    .item-info h3, .item-info p {
+        font-size: var(--font-size-small);
+    }
 }

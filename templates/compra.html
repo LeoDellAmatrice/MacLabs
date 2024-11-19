@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-MacLabs Sandbox
+Finalizar Compra
 {% endblock %}
 
 {% block css %}
@@ -9,20 +9,33 @@ MacLabs Sandbox
 {% endblock %}
 
 {% block content %}
-<section>
-    <h1>Consulta de CEPS</h1> <br><br>
-    <div class="container">
-        <input type="text" id="cep" placeholder="Digite um CEP">
-        <button onclick="endereco()">Pesquisar</button>
-    </div>
-    <div class="resultado-wrapper">
-        <div class="resultado">
-
+<section id="checkout-container">
+    <h2>Resumo do Carrinho</h2>
+    <div id="checkout-list">
+        {% for item in carrinho %}
+        <div class="checkout-item">
+            <img src="{{ url_for('static', filename=item.imagem) }}" alt="{{ item.nome }}">
+            <div class="item-info">
+                <h3>{{ item.nome }}</h3>
+                <p>Quantidade: {{ item.quantidade }}</p>
+                <p>Preço Unitário: ${{ item.preco }}</p>
+                <p>Total: ${{ (item.preco | float) * (item.quantidade | int) }}</p>
+            </div>
         </div>
+        {% endfor %}
+    </div>
+
+    <div id="checkout-totals">
+        <p>Subtotal: ${{ subtotal }}</p>
+        <p>Frete: $10.00</p>
+        <p><strong>Total: ${{ subtotal + 10.00 }}</strong></p>
+    </div>
+
+    <div class="checkout-actions">
+        <button class="finalizar-compra">Finalizar Compra</button>
     </div>
 </section>
 {% endblock %}
 
 {% block js %}
-<script src="{{ url_for('static', filename='js/cep.js') }}"></script>
 {% endblock %}

@@ -41,10 +41,11 @@ MacLabs Produtos
         {% endif %}
         {% for produto in produtos %}
             <div class="product-card">
-                <img id="img-produto" src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
-                <h2>{{ produto.nome }}</h2>
-                <h3>R${{  produto.preco  }}</h3>
-                <a href="produtos/{{produto.nome}}" class="botao" >Saiba Mais</a>
+                <a href="produtos/{{produto.nome}}">
+                    <img id="img-produto" src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}">
+                    <h2>{{ produto.nome }}</h2>
+                    <h3>R${{  produto.preco  }}</h3>
+                </a>
             </div>
         {% endfor %}
     </div>
