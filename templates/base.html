@@ -7,10 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="color-scheme" content="dark light">
     <link rel="icon" href="{{ url_for('static', filename='img/icon.svg') }}">
-    {% block css %}
-    {% endblock css %}
-    <title>{% block title %}MacLabs{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    {% block css %}{% endblock css %}
+    <title>{% block title %}MacLabs{% endblock %}</title>
 </head>
 <body>
     <header>
@@ -51,7 +50,12 @@
     <footer>
         <div id="footer-principal">
             <!-- Logo -->
-            <img id="logo-completa" src="{{url_for('static', filename='img/logocompleta.svg')}}" alt="Logo completa MacLabs">
+            <div id="div-logo-completa">
+                <img id="eng_azul_logo" src="{{url_for('static', filename='img/eng_azul.svg')}}">
+                <img id="eng_amarela_logo" class="gear" src="{{url_for('static', filename='img/eng_amarela.svg')}}">
+                <img id="eng_vermelha_logo" src="{{url_for('static', filename='img/eng_vermelha.svg')}}">
+                <img id="logo-completa" src="{{url_for('static', filename='img/logo_semi_completa.svg')}}" alt="Logo completa MacLabs">
+            </div>
             <!-- contato -->
             <div id="contato">
                 <h3>Contato</h3>
@@ -95,6 +99,6 @@
 </body>
 <script src="{{ url_for('static', filename='js/load.js') }}"></script>
 <script src="{{ url_for('static', filename='js/inscrever.js') }}"></script>
-{% block js %}
-{% endblock %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% block js %} {% endblock %}
 </html>

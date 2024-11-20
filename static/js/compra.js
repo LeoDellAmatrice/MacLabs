@@ -47,8 +47,8 @@ function criar_item() {
         }
 
     }
-    document.getElementById('subtotal').textContent = `R$: ${Number(totalT).toFixed(2)}`
-    document.getElementById('total').textContent = `R$: ${Number(totalT+15).toFixed(2)}`
+    document.getElementById('subtotal').textContent = `Total: R$ ${Number(totalT).toFixed(2)}`
+    document.getElementById('total').textContent = `Total + Frete: R$ ${Number(totalT+15).toFixed(2)}`
 }
 
 criar_item()

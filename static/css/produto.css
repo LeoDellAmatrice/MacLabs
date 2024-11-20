@@ -66,6 +66,33 @@
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
+
+    & div {
+        display:flex;
+        flex-direction: column;
+
+        & input {
+            width: 80px;
+            margin-top: 10px;
+        }
+    }
+
+    & a {
+        display: flex;
+        align-items: end;
+    }
+
+    & form {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        & button {
+            width: 140px;
+        }
+    }
 }
 
 .produto-actions input {
@@ -99,9 +126,13 @@ button:hover {
 }
 
 /* Responsividade */
-@media (max-width: 768px) {
+@media (max-width: 630px) {
     .produto-detalhes-container {
         flex-direction: column;
+    }
+
+    .especificacoes {
+        width: 80%;
     }
 
     .produto-info {

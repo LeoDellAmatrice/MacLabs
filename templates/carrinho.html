@@ -31,14 +31,16 @@ MacLabs Carrinho
     <h2>Recomendações</h2>
     <div class="recomendacao-itens">
         {% for recomenda in recomendacoes %}
-        <div class="recomendacao-item">
-            <img src="{{ url_for('static', filename=recomenda.imagem) }}" alt="{{ recomenda.nome }}">
-            <div class="item-info">
-                <h3>{{ recomenda.nome }}</h3>
-                <p>Preço: R$ {{ recomenda.preco }}</p>
+        <a href="/produtos/{{recomenda.nome}}">
+            <div class="recomendacao-item">
+                <img src="{{ url_for('static', filename=recomenda.imagem) }}" alt="{{ recomenda.nome }}">
+                <div class="item-info">
+                    <h3>{{ recomenda.nome }}</h3>
+                    <p>Preço: R$ {{ recomenda.preco }}</p>
+                </div>
+                <button class="comprar" >Ver mais</button>
             </div>
-            <a href="/produtos/{{recomenda.nome}}" class="comprar">Ver mais</a>
-        </div>
+        </a>
         {% endfor %}
     </div>
 </div>

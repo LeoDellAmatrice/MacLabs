@@ -16,17 +16,58 @@ Finalizar Compra
     </div>
 
     <div id="checkout-totals">
+        <p>Custos:</p>
         <p id="subtotal" ></p>
         <p>Frete: $15.00</p>
         <p id="total" ><strong></strong></p>
     </div>
 
+    <div id="checkout-journey">
+        <p><strong>Jornada do Criador:</strong></p>
+        <p id="step-1">Escolhendo as peças...</p>
+        <p id="step-2">Montando seu pedido...</p>
+        <p id="step-3">Criando algo único...</p>
+        <p id="step-4">Processo finalizado! Seu pedido está em andamento.</p>
+    </div>
+
     <div class="checkout-actions">
-        <button class="finalizar-compra">Finalizar Compra</button>
+        <button class="finalizar-compra" onclick="finalizarCompra()">Finalizar Compra</button>
     </div>
 </section>
 {% endblock %}
 
 {% block js %}
+<script>
+function finalizarCompra() {
+    // Exibe as etapas da "jornada de criação"
+    document.getElementById("checkout-journey").style.display = "block";
+
+    // Fases da jornada com intervalos de tempo para simulação
+    let step1 = document.getElementById("step-1");
+    let step2 = document.getElementById("step-2");
+    let step3 = document.getElementById("step-3");
+    let step4 = document.getElementById("step-4");
+
+    setTimeout(() => {
+        step1.style.display = "none";
+        step2.style.display = "block";
+    }, 1000);
+
+    setTimeout(() => {
+        step2.style.display = "none";
+        step3.style.display = "block";
+    }, 3000);
+
+    setTimeout(() => {
+        step3.style.display = "none";
+        step4.style.display = "block";
+    }, 5000);
+
+    setTimeout(() => {
+        // Ao final da jornada, redireciona ou exibe uma confirmação
+        window.location.href = "/compra-realizada";  // Pode redirecionar para a página inicial ou à página de confirmação
+    }, 7000); // Fim do processo de finalização
+}
+</script>
 <script src="{{ url_for('static', filename='js/compra.js') }}"></script>
 {% endblock %}

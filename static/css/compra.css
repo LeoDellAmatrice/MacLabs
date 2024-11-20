@@ -134,6 +134,24 @@
     background-color: var(--hover-color);
 }
 
+/* Estilo da "Jornada do Criador" */
+#checkout-journey {
+    padding: 20px;
+    background-color: var(--secondary-bg-color);
+    border-radius: 10px;
+    margin-top: 30px;
+    display: none;
+}
+
+#checkout-journey p {
+    margin: 10px 0;
+    font-size: var(--font-size-medium);
+}
+
+#step-2, #step-3, #step-4 {
+    display: none;
+}
+
 /* Responsividade */
 @media (max-width: 500px) {
     .checkout-item img {

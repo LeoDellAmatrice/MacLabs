@@ -16,21 +16,48 @@ MacLabs Produtos
 <div id="barra_pesquisa">
     <form action="{{ url_for('produtos_filtrados') }}" method="GET">
         <div class="search-box">
-            <input type="text" id="search-input" autocomplete="off" name="filtro-nome" placeholder="Pesquisar por nome...">
+            <input type="text" id="search-input" autocomplete="off" name="filtro-nome" value="{{ nome }}" placeholder="Pesquisar por nome...">
             <button id="search-button" type="submit">Buscar</button>
             <a href="{{ url_for('produtos')}}" type="button" id="reset-button">Redefinir</a>
         </div>
 
         <div class="filter-tags">
             <span>Filtros:</span>
-            <label><input type="checkbox" name="tag" value="decoracao"> Decoração</label>
-            <label><input type="checkbox" name="tag" value="armazenamento"> Armazenamento</label>
-            <label><input type="checkbox" name="tag" value="organizacao"> Organizacao</label>
-            <label><input type="checkbox" name="tag" value="brinquedos"> Brinquedos</label>
-            <label><input type="checkbox" name="tag" value="ferramentas"> Ferramentas</label>
-            <label><input type="checkbox" name="tag" value="escritorio"> Escritório</label>
-            <label><input type="checkbox" name="tag" value="jardim"> Jardim</label>
-            <!-- Adicione mais tags conforme necessário -->
+            <label>
+                <input type="checkbox" name="tag" value="decoracao"
+                       {% if tag == "decoracao" %}checked{% endif %}>
+                Decoração
+            </label>
+            <label>
+                <input type="checkbox" name="tag" value="armazenamento"
+                       {% if tag == "armazenamento" %}checked{% endif %}>
+                Armazenamento
+            </label>
+            <label>
+                <input type="checkbox" name="tag" value="organizacao"
+                       {% if tag == "organizacao" %}checked{% endif %}>
+                Organização
+            </label>
+            <label>
+                <input type="checkbox" name="tag" value="brinquedos"
+                       {% if tag == "brinquedos" %}checked{% endif %}>
+                Brinquedos
+            </label>
+            <label>
+                <input type="checkbox" name="tag" value="ferramentas"
+                       {% if tag == "ferramentas" %}checked{% endif %}>
+                Ferramentas
+            </label>
+            <label>
+                <input type="checkbox" name="tag" value="escritorio"
+                       {% if tag == "escritorio" %}checked{% endif %}>
+                Escritório
+            </label>
+            <label>
+                <input type="checkbox" name="tag" value="jardim"
+                       {% if tag == "jardim" %}checked{% endif %}>
+                Jardim
+            </label>
         </div>
     </form>
 </div>

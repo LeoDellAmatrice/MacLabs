@@ -47,6 +47,10 @@ html {
     scroll-behavior: smooth;
 }
 
+a {
+    text-decoration: none;
+}
+
 body {
     background-color: var(--primary-bg-color);
     margin: 0;
@@ -262,6 +266,73 @@ header {
 }
 
 /* FOOTER */
+
+#div-logo-completa {
+    position: relative;
+    align-self: center;
+}
+/* Logo completa (fundo) */
+#logo-completa {
+  width: 100%;
+  height: auto;
+  position: relative; /* Fica no fundo */
+  z-index: 1; /* Mantém sobreposição correta */
+}
+
+/* Estilo para as engrenagens */
+#eng_azul_logo,
+#eng_amarela_logo,
+#eng_vermelha_logo {
+    position: absolute; /* Para posicionamento sobreposto */
+    z-index: 2; /* Fica acima do logo de fundo */
+}
+
+/* Posicionamento individual das engrenagens */
+#eng_azul_logo {
+    width: 50px;
+    top: 5px; /* Ajuste conforme necessário */
+    left: 40px;
+    animation: girarH linear infinite;
+    animation-duration: 4s; /* Velocidade diferente */
+}
+
+#eng_amarela_logo {
+    width: 30px;
+    top: -7px;
+    left: 14px;
+}
+
+.rotate {
+    animation: girar 4s ease-in-out forwards;
+}
+
+#eng_vermelha_logo {
+    width: 40px;
+    top: 25px;
+    left: 6px;
+    animation: girar 6s linear infinite;
+    animation-duration: 4s; /* Velocidade diferente */
+}
+
+/* Animação de rotação */
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes girarH {
+    from {
+        transform: rotate(-10deg);
+    }
+    to {
+        transform: rotate(-370deg);
+    }
+}
+
 footer {
     background-color: var(--secondary-bg-color);
     padding: 10px 20px;
@@ -363,6 +434,11 @@ footer {
 
 /* Tela até 780px */
 @media (max-width: 760px) {
+
+    footer {
+        padding-top: 50px;
+    }
+
     #nav-buttons-logado p {
         display: none;
     }
@@ -379,10 +455,6 @@ footer {
 
     footer h3 {
         text-align: center;
-    }
-
-    #logo-completa {
-        margin-top: 30px;
     }
 
 

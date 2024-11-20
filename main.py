@@ -271,6 +271,11 @@ def index():
     return render_template('index.html', produtos=lista_produtos)
 
 
+@app.route('/compra-realizada')
+def agradecimento():
+    return render_template('agradecimento.html')
+
+
 @app.route('/produtos', methods=["GET"])
 @cache.cached(timeout=60)
 def produtos():
@@ -278,7 +283,6 @@ def produtos():
 
 
 @app.route('/produtos/<nome_produto>', methods=["GET"])
-@cache.cached(timeout=60)
 def produto_especifico(nome_produto):
     if request.method == "GET":
         for item in lista_produtos:
@@ -315,9 +319,9 @@ def produtos_filtrados():
 
     # Renderiza a mensagem se nenhum produto foi encontrado
     if not lista_filtrada:
-        return render_template('produtos.html', produtos=[], mensagem="Nenhum produto encontrado")
+        return render_template('produtos.html', produtos=[], mensagem="Nenhum produto encontrado", tag=filtro_tag, nome=filtro_nome)
 
-    return render_template('produtos.html', produtos=lista_filtrada)
+    return render_template('produtos.html', produtos=lista_filtrada, tag=filtro_tag, nome=filtro_nome)
 
 
 @app.route("/login", methods=["GET", "POST"])
