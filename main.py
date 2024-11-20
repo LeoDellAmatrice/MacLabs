@@ -251,8 +251,6 @@ lista_produtos = [
     }
 ]
 
-carrinho = []
-
 context = (
     f"Você é o chatbot da MacLabs, especializado em guiar usuários no site e responder perguntas sobre nossos produtos e serviços de impressão 3D."
     f"Caso o usuário queira saber mais sobre a empresa, ofereça uma resposta sucinta e sugira que visite a aba Sobre do site para mais detalhes."
@@ -279,47 +277,6 @@ def produtos():
     return render_template('produtos.html', produtos=lista_produtos)
 
 
-@app.route('/adicionar_carrinho', methods=["POST"])
-def adicionar_carrinho():
-    nome_produto = request.form.get("produto")
-    quantidade = int(request.form.get("quantidade", 1))
-
-    # Simular um carrinho (poderia ser uma sessão, banco de dados etc.)
-    if 'carrinho' not in globals():
-        global carrinho
-        carrinho = []
-
-    # Verificar se o produto já está no carrinho
-    produto_no_carrinho = next((item for item in carrinho if item["nome"] == nome_produto), None)
-
-    if produto_no_carrinho:
-        produto_no_carrinho["quantidade"] += quantidade
-    else:
-        # Procurar o produto na lista de produtos
-        produto = next((p for p in lista_produtos if p["nome"] == nome_produto), None)
-        if produto:
-            # Adicionar ao carrinho com a quantidade
-            carrinho.append({
-                "nome": produto["nome"],
-                "imagem": produto["imagem"],
-                "preco": produto["preco"],
-                "quantidade": quantidade,
-            })
-    return redirect(url_for("exibir_carrinho"))
-
-
-@app.route('/remover_carrinho', methods=["POST"])
-def remover_carrinho():
-    global carrinho
-    nome_produto = request.form.get("produto")
-
-    # Verifica se o carrinho contém o produto e o remove
-    carrinho = [item for item in carrinho if item["nome"] != nome_produto]
-
-    # Redireciona para a página do carrinho
-    return redirect(url_for("exibir_carrinho"))
-
-
 @app.route('/produtos/<nome_produto>', methods=["GET"])
 @cache.cached(timeout=60)
 def produto_especifico(nome_produto):
@@ -331,23 +288,10 @@ def produto_especifico(nome_produto):
 
 @app.route('/exibir_carrinho')
 def exibir_carrinho():
-    global carrinho
-    total = valor_total(carrinho)
     recomenda_lista = []
     for item in range(5):
         recomenda_lista.append(random.choice(lista_produtos))
-    if not carrinho:
-        return render_template('carrinho_vazio.html', recomendacoes=recomenda_lista)
-    return render_template('carrinho.html', carrinho=carrinho, subtotal=total, recomendacoes=recomenda_lista)
-
-
-def valor_total(lista):
-    total = 0
-    for produto in lista:
-        preco = float(produto['preco'])  # Certificando-se que o preço é convertido para float
-        quantidade = produto['quantidade']  # Certificando-se que quantidade é numérica
-        total += preco * quantidade
-    return total
+    return render_template('carrinho.html', recomendacoes=recomenda_lista)
 
 
 @app.route('/produtos-filtrados')
@@ -399,6 +343,7 @@ def inscricao():
 
 
 @app.route('/chatbot')
+@cache.cached(timeout=60)
 def chatbot():
     return render_template('chatbot.html')
 
@@ -439,9 +384,7 @@ def criar():
 
 @app.route('/comprar')
 def comprar():
-    subtotal = sum(float(item['preco']) * int(item['quantidade']) for item in carrinho)
-
-    return render_template('compra.html', carrinho=carrinho, subtotal=subtotal)
+    return render_template('compra.html')
 
 
 if __name__ == '__main__':

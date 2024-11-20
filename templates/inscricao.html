@@ -37,10 +37,6 @@ MacLabs Inscrição
 
 {% block js %}
 <script>
-    window.addEventListener('load', function() {
-        document.body.classList.add('loaded');
-    });
-
     document.getElementById('inscricao-form').addEventListener('submit', function(event) {
         event.preventDefault();
         const usuario = document.getElementById('usuario').value;

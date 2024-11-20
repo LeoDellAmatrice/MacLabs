@@ -71,7 +71,6 @@
             for (let i = 0; i < produtosLocalStorage.length; i++) {
                 if (produtosLocalStorage[i].nome === produto.nome) {
                     produtosLocalStorage[i]['quantidade'] += Number(document.getElementById('quantidade').value);
-                    console.log(produtosLocalStorage[i])
                     window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage))
                     produtoEncontrado = true;
                     return;
