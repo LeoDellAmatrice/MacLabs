@@ -52,6 +52,82 @@
     font-size: var(--font-size-medium);
 }
 
+.produto-detalhes-container .especificacoes div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px; /* Reduz espaço entre os campos */
+}
+
+.produto-detalhes-container .especificacoes label {
+    font-size: 20px; /* Texto menor */
+    font-weight: 500;
+    color: var(--text-color);
+    margin-right: 10px;
+    flex: 1; /* Faz o label ocupar o espaço proporcional */
+    text-align: left; /* Alinhamento suave */
+}
+
+.produto-detalhes-container .especificacoes select,
+.produto-detalhes-container .especificacoes input {
+    padding: 6px 8px; /* Campos menores */
+    font-size: 0.85rem; /* Texto mais compacto */
+    border-radius: 4px;
+    border: 1px solid var(--input-border-color);
+    background-color: var(--input-bg-color);
+    color: var(--text-color);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    flex: 2; /* Campos proporcionalmente maiores que os labels */
+}
+
+.produto-detalhes-container .especificacoes select:focus,
+.produto-detalhes-container .especificacoes input:focus {
+    border-color: var(--hover-color);
+    box-shadow: 0 0 3px var(--hover-color);
+}
+
+/* Botão, caso esteja diretamente relacionado */
+.produto-detalhes-container .produto-actions button {
+    padding: 8px 12px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--button-bg-color);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 15px; /* Espaço entre os campos e o botão */
+    display: block;
+    width: 100%; /* Botão ocupa toda a largura */
+}
+
+.produto-detalhes-container .produto-actions button:hover {
+    background-color: var(--hover-color);
+}
+
+/* Compactação para telas menores */
+@media (max-width: 768px) {
+    .produto-detalhes-container .especificacoes div {
+        flex-direction: column;
+        align-items: flex-start; /* Alinha ao topo */
+        gap: 5px; /* Reduz espaço entre os elementos */
+    }
+
+    .produto-detalhes-container .especificacoes label {
+        text-align: left;
+        margin: 0;
+    }
+
+    .produto-detalhes-container .especificacoes select {
+        width: 100%;
+    }
+
+    .produto-detalhes-container .especificacoes input {
+        width: 94%;
+    }
+}
+
+
 .produto-actions {
     display: flex;
     align-items: center;
@@ -85,7 +161,7 @@
     & form {
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         flex-wrap: wrap;
         gap: 10px;
 

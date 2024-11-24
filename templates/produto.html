@@ -26,14 +26,6 @@
             <li>Peso: {{ produto.peso }}</li>
             {% endif %}
 
-            {% if produto.material %}
-            <li>Material: {{ produto.material }}</li>
-            {% endif %}
-
-            {% if produto.densidade %}
-            <li>Densidade: {{ produto.densidade }}</li>
-            {% endif %}
-
             {% if produto.dimensoes %}
             <li>Dimensões: {{ produto.dimensoes }}</li>
             {% endif %}
@@ -41,14 +33,47 @@
             {% if produto.tags %}
             <li>Tags: {{ produto.tags | join(', ') }}.</li>
             {% endif %}
+
+            {% if produto.material %}
+            <div>
+                <label for="material">Material:</label>
+                <select id="material" name="material">
+                    <option value="PLA">PLA</option>
+                    <option value="ABS">ABS</option>
+                    <option value="PETG">PETG</option>
+                </select>
+            </div>
+            {% endif %}
+
+            <div>
+                <label for="densidade">Densidade:</label>
+                <select id="densidade" name="densidade">
+                    <option value="10%">10%</option>
+                    <option value="20%">20%</option>
+                    <option value="30%">30%</option>
+                    <option value="40%">40%</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="cor">Cor:</label>
+                <select id="cor" name="cor">
+                    <option value="vermelho">Vermelho</option>
+                    <option value="azul">Azul</option>
+                    <option value="preto">Preto</option>
+                    <option value="branco">Branco</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" name="quantidade" value="1" min="1">
+            </div>
+
         </ul>
         <div class="produto-actions">
             <form id="acao-produto">
                 <input type="hidden" name="produto" value="{{ produto.nome }}">
-                <div>
-                    <label for="quantidade">Quantidade:</label>
-                    <input type="number" id="quantidade" name="quantidade" value="1" min="1">
-                </div>
                 <a href="{{ url_for('exibir_carrinho') }}">
                     <button type="button" onclick="adicionar_carrinho()">Adicionar ao Carrinho</button>
                 </a>
@@ -62,34 +87,50 @@
 {% block js %}
 <script>
     function adicionar_carrinho() {
-        const produto = {{ produto|tojson }}
+        const produto = {{ produto|tojson }};
+        const cor = document.getElementById('cor').value;
+        const material = document.getElementById('material').value;
+        const densidade = document.getElementById('densidade').value;
+        const quantidade = Number(document.getElementById('quantidade').value);
+
         let produtosLocalStorage = window.localStorage.getItem("produtos");
         const produtos = [];
 
         if (produtosLocalStorage != null) {
-            produtosLocalStorage = JSON.parse(produtosLocalStorage)
+            produtosLocalStorage = JSON.parse(produtosLocalStorage);
 
             let produtoEncontrado = false;
 
             for (let i = 0; i < produtosLocalStorage.length; i++) {
-                if (produtosLocalStorage[i].nome === produto.nome) {
-                    produtosLocalStorage[i]['quantidade'] += Number(document.getElementById('quantidade').value);
-                    window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage))
+                if (
+                    produtosLocalStorage[i].nome === produto.nome &&
+                    produtosLocalStorage[i].cor === cor &&
+                    produtosLocalStorage[i].material === material &&
+                    produtosLocalStorage[i].densidade === densidade
+                ) {
+                    produtosLocalStorage[i]['quantidade'] += quantidade;
+                    window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage));
                     produtoEncontrado = true;
                     return;
                 }
             }
 
             if (!produtoEncontrado) {
-                produto['quantidade'] = Number(document.getElementById('quantidade').value)
+                produto['quantidade'] = quantidade;
+                produto['cor'] = cor;
+                produto['material'] = material;
+                produto['densidade'] = densidade;
                 produtosLocalStorage.push(produto);
-                window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage))
+                window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage));
             }
 
         } else {
-            produto['quantidade'] = Number(document.getElementById('quantidade').value)
+            produto['quantidade'] = quantidade;
+            produto['cor'] = cor;
+            produto['material'] = material;
+            produto['densidade'] = densidade;
             produtos.push(produto);
-            window.localStorage.setItem("produtos", JSON.stringify(produtos))
+            window.localStorage.setItem("produtos", JSON.stringify(produtos));
         }
     }
 </script>
