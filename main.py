@@ -301,7 +301,7 @@ def exibir_carrinho():
 @app.route('/produtos-filtrados')
 def produtos_filtrados():
     filtro_nome = request.args.get('filtro-nome', '').strip().lower()
-    filtro_tag = request.args.get('tag', '').strip().lower()
+    filtro_tag = request.args.getlist('tag')
     lista_filtrada = []
 
     # Quando ambos os filtros estão vazios, exibe todos os produtos
@@ -311,7 +311,7 @@ def produtos_filtrados():
         # Filtragem de acordo com os parâmetros inseridos
         for produto in lista_produtos:
             nome_corresponde = re.search(filtro_nome, produto.get('nome', '').lower()) if filtro_nome else True
-            tag_corresponde = filtro_tag in (produto.get('tags') or []) if filtro_tag else True
+            tag_corresponde = any(tag in filtro_tag for tag in produto.get('tags', []))
 
             # Adiciona o produto se corresponder aos critérios ativos
             if nome_corresponde and tag_corresponde:

@@ -36,11 +36,15 @@ if (usuarioLocalStorage != null) {
     usuario_logado_menu.textContent = "Usuario: " + usuarioLocalStorage;
     div_usuario_logado.style.display = "flex";
     div_usuario_nao_logado.style.display = "none";
-    call.style.display = "none";
+    if (call != null) {
+        call.style.display = "none";
+    }
 } else {
     div_usuario_nao_logado.style.display = "flex";
     div_usuario_logado.style.display = "none";
-    call.style.display = "block";
+    if (call != null) {
+        call.style.display = "block";
+    }
 }
 
 function desconectar() {

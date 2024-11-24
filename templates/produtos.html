@@ -25,37 +25,37 @@ MacLabs Produtos
             <span>Filtros:</span>
             <label>
                 <input type="checkbox" name="tag" value="decoracao"
-                       {% if tag == "decoracao" %}checked{% endif %}>
+                       {% if "decoracao" in tag %}checked{% endif %}>
                 Decoração
             </label>
             <label>
                 <input type="checkbox" name="tag" value="armazenamento"
-                       {% if tag == "armazenamento" %}checked{% endif %}>
+                       {% if "armazenamento" in tag  %}checked{% endif %}>
                 Armazenamento
             </label>
             <label>
                 <input type="checkbox" name="tag" value="organizacao"
-                       {% if tag == "organizacao" %}checked{% endif %}>
+                       {% if 'organizacao' in tag %}checked{% endif %}>
                 Organização
             </label>
             <label>
                 <input type="checkbox" name="tag" value="brinquedos"
-                       {% if tag == "brinquedos" %}checked{% endif %}>
+                       {% if 'brinquedos' in tag %}checked{% endif %}>
                 Brinquedos
             </label>
             <label>
                 <input type="checkbox" name="tag" value="ferramentas"
-                       {% if tag == "ferramentas" %}checked{% endif %}>
+                       {% if "ferramentas" in tag %}checked{% endif %}>
                 Ferramentas
             </label>
             <label>
                 <input type="checkbox" name="tag" value="escritorio"
-                       {% if tag == "escritorio" %}checked{% endif %}>
+                       {% if "escritorio" in tag %}checked{% endif %}>
                 Escritório
             </label>
             <label>
                 <input type="checkbox" name="tag" value="jardim"
-                       {% if tag == "jardim" %}checked{% endif %}>
+                       {% if "jardim" in tag %}checked{% endif %}>
                 Jardim
             </label>
         </div>

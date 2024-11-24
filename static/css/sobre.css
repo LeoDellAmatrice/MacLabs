@@ -46,10 +46,6 @@
     transition: transform 0.5s ease;
 }
 
-.gear:hover {
-    transform: rotate(360deg);
-}
-
 /* Animação de rotação */
 .rotate {
     animation: spin 1.5s ease-in-out forwards;
