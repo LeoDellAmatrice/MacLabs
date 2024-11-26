@@ -25,7 +25,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '20cm x 20cm x 2cm',
         'estoque': 10,
-        'tags': ['decoracao', 'jardim'],
+        'tags': ['decoração', 'jardim'],
         'descricao': 'Prato para vaso de plantas, ideal para manter a água e evitar sujeira em sua casa.'
     },
     {
@@ -38,7 +38,7 @@ lista_produtos = [
         'densidade': '30%',
         'dimensoes': '30cm x 30cm x 15cm',
         'estoque': 5,
-        'tags': ['armazenamento', 'organizacao'],
+        'tags': ['armazenamento', 'organização'],
         'descricao': 'Caixa empilhável resistente, ideal para organizar e armazenar objetos.'
     },
     {
@@ -51,7 +51,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 5cm x 5cm',
         'estoque': 15,
-        'tags': ['organizacao'],
+        'tags': ['organização'],
         'descricao': 'Dispenser prático para armazenar e organizar pilhas AA e AAA.'
     },
     {
@@ -90,7 +90,7 @@ lista_produtos = [
         'densidade': '40%',
         'dimensoes': '60cm x 60cm x 80cm',
         'estoque': 2,
-        'tags': ['decoracao'],
+        'tags': ['decoração'],
         'descricao': 'Conjunto de mesa e cadeiras, perfeito para decoração de interiores e espaços compactos.'
     },
     {
@@ -103,7 +103,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 10cm x 12cm',
         'estoque': 25,
-        'tags': ['organizacao', 'escritorio'],
+        'tags': ['organização', 'escritório'],
         'descricao': 'Porta lápis moderno para organizar sua mesa de escritório com estilo.'
     },
     {
@@ -116,7 +116,7 @@ lista_produtos = [
         'densidade': '25%',
         'dimensoes': '12cm x 12cm x 1cm',
         'estoque': 30,
-        'tags': ['decoracao', 'brinquedos'],
+        'tags': ['decoraçao', 'brinquedos'],
         'descricao': 'Shuriken decorativa, ideal para fãs de cultura oriental e artes marciais.'
     },
     {
@@ -129,7 +129,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '15cm x 10cm x 10cm',
         'estoque': 8,
-        'tags': ['decoracao', 'brinquedos'],
+        'tags': ['decoração', 'brinquedos'],
         'descricao': 'Miniatura de elefante impresso em 3D, ótimo para decoração e colecionadores.'
     },
     {
@@ -142,7 +142,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 10cm x 8cm',
         'estoque': 10,
-        'tags': ['decoracao', 'brinquedos'],
+        'tags': ['decoração', 'brinquedos'],
         'descricao': 'Sapo decorativo impresso em 3D, ideal para coleções ou decoração temática.'
     },
     {
@@ -155,7 +155,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '12cm x 8cm x 10cm',
         'estoque': 12,
-        'tags': ['decoracao', 'brinquedos'],
+        'tags': ['decoração', 'brinquedos'],
         'descricao': 'Figura de gato impresso em 3D, um toque especial para sua decoração.'
     },
     {
@@ -181,7 +181,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '30cm x 10cm x 5cm',
         'estoque': 7,
-        'tags': ['decoracao', 'brinquedos'],
+        'tags': ['decoração', 'brinquedos'],
         'descricao': 'Modelo de tubarão articulado, perfeito para decoração e coleções.'
     },
     {
@@ -207,7 +207,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '10cm x 8cm x 5cm',
         'estoque': 20,
-        'tags': ['escritorio'],
+        'tags': ['escritório'],
         'descricao': 'Suporte para celular prático e moderno, ideal para mesas de escritório.'
     },
     {
@@ -220,7 +220,7 @@ lista_produtos = [
         'densidade': '20%',
         'dimensoes': '15cm x 8cm x 10cm',
         'estoque': 10,
-        'tags': ['brinquedos', 'decoracao'],
+        'tags': ['brinquedos', 'decoração'],
         'descricao': 'Figura decorativa de coelho, perfeita para decorações temáticas e coleções.'
     },
     {
@@ -233,7 +233,7 @@ lista_produtos = [
         'densidade': '25%',
         'dimensoes': '25cm x 10cm x 10cm',
         'estoque': 4,
-        'tags': ['brinquedos', 'decoracao'],
+        'tags': ['brinquedos', 'decoraçãoe'],
         'descricao': 'Modelo de foguete impresso em 3D, ideal para decoração de temas espaciais.'
     },
     {
