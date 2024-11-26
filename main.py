@@ -12,7 +12,7 @@ cache = Cache(app, config={'CACHE_TYPE': 'simple'})
 app.config['UPLOAD_FOLDER'] = '/uploads'
 
 # Variaveis #
-quantidade_itens_recomendados: int = 5
+quantidade_itens_recomendados: int = 8
 
 lista_produtos = [
     {
@@ -262,6 +262,7 @@ context = (
     f"A missão da MacLabs é 'Incentivar a criatividade e inovação dos nossos clientes, transformando ideias em realidade'."
     f" Nossa visão é 'Ser uma empresa que oferece aos clientes a chance de mudar o mundo'."
     f" Valorizamos 'Criatividade, inovação, ética, sustentabilidade, qualidade e disciplina.'"
+    f"Caso você diga para o usuario visitar uma pagina do site, escreva a tag do HTML <a></a> com href para a pagina que se referencia com todas as letras minusculas(produtos, sobre, exibir_carrinho, #contato)"
     f"Agora, a mensagem do usuário: ")
 
 
@@ -293,7 +294,7 @@ def produto_especifico(nome_produto):
 @app.route('/exibir_carrinho')
 def exibir_carrinho():
     recomenda_lista = []
-    for item in range(5):
+    for item in range(quantidade_itens_recomendados):
         recomenda_lista.append(random.choice(lista_produtos))
     return render_template('carrinho.html', recomendacoes=recomenda_lista)
 
@@ -354,7 +355,7 @@ def chatbot():
 
 @app.route('/search')
 def search():
-    model = genai.GenerativeModel('gemini-1.0-pro-latest')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     genai.configure(api_key=os.getenv('API'))
     prompt = request.args.get('prompt')
     input_ia = f'{context}: {prompt}'
