@@ -15,6 +15,31 @@ main {
     display: flex;
     flex-direction: column;
     overflow: hidden; /* Para garantir que o conteúdo não extrapole */
+
+    & a {
+        color: var(--hover-color); /* Cor que chama atenção, mas não é exagerada */
+        text-decoration: none; /* Remove o sublinhado padrão */
+        font-weight: bold; /* Deixa o link levemente mais destacado */
+        transition: color 0.3s, border-bottom 0.3s; /* Suaviza as transições */
+        border-bottom: 2px solid transparent; /* Adiciona uma linha inferior discreta */
+    }
+
+    /* Efeito ao passar o mouse */
+    & a:hover {
+        color: var(--hover-color); /* Muda para uma cor diferente ao passar o mouse */
+        border-bottom: 2px solid var(--hover-color); /* Exibe uma linha inferior com a mesma cor */
+    }
+
+    /* Para acessibilidade (quando o link está focado via teclado) */
+    & a:focus {
+        outline: none; /* Remove o contorno padrão */
+        border: 2px solid var(--hover-color); /* Linha amarela para destacar o foco */
+    }
+
+    /* Links visitados (opcional, caso queira uma distinção sutil) */
+    & a:visited {
+        color: var(--text-color); /* Exemplo: cinza claro para links já visitados */
+    }
 }
 
 .chat-header {
