@@ -381,10 +381,10 @@ def sobre():
     return render_template('sobre.html')
 
 
-@app.route('/criar')
+@app.route('/sandbox')
 @cache.cached(timeout=60)
-def criar():
-    return render_template('criar.html')
+def sandbox():
+    return render_template('sandbox.html')
 
 
 @app.route('/comprar')

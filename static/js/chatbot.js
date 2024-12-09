@@ -33,11 +33,16 @@ async function sendMessage()  {
         chatWindow.removeChild(loadingMessage);
         const botMessage = document.createElement('div');
         botMessage.className = 'message bot';
-        botMessage.innerHTML = `<span>${botResponse}</span>`;
+        botMessage.innerHTML = `<span>${formatHighlightedText(botResponse)}</span>`;
         chatWindow.appendChild(botMessage);
 
         chatWindow.scrollTop = chatWindow.scrollHeight;
     }
+}
+
+// Função para destacar texto entre ** no HTML
+function formatHighlightedText(text) {
+    return text.replace(/\*\*(.+?)\*\*/g, '<span class="highlight">$1</span>');
 }
 
 function checkEnter(event) {
