@@ -40,6 +40,10 @@ main {
     & a:visited {
         color: var(--text-color); /* Exemplo: cinza claro para links já visitados */
     }
+
+    & a:link {
+        color: #73a6e8;
+    }
 }
 
 .chat-header {
