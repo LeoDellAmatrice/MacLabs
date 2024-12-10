@@ -55,45 +55,6 @@ lista_produtos = [
         'descricao': 'Dispenser prático para armazenar e organizar pilhas AA e AAA.'
     },
     {
-        'nome': 'Funil',
-        'imagem': 'img/produtos/funil.png',
-        'preco': '20.00',
-        'favorito': False,
-        'peso': '80g',
-        'material': 'PLA',
-        'densidade': '15%',
-        'dimensoes': '15cm x 10cm x 10cm',
-        'estoque': 20,
-        'tags': [],
-        'descricao': 'Funil de plástico resistente, perfeito para transferência de líquidos na cozinha.'
-    },
-    {
-        'nome': 'Garfo',
-        'imagem': 'img/produtos/garfo.png',
-        'preco': '15.00',
-        'favorito': True,
-        'peso': '30g',
-        'material': 'PLA',
-        'densidade': '10%',
-        'dimensoes': '18cm x 3cm x 1cm',
-        'estoque': 50,
-        'tags': [],
-        'descricao': 'Garfo impresso em 3D, ideal para uso diário ou em piqueniques.'
-    },
-    {
-        'nome': 'Mesas e cadeiras',
-        'imagem': 'img/produtos/mesas_cadeiras.png',
-        'preco': '100.00',
-        'favorito': False,
-        'peso': '1200g',
-        'material': 'ABS',
-        'densidade': '40%',
-        'dimensoes': '60cm x 60cm x 80cm',
-        'estoque': 2,
-        'tags': ['decoração'],
-        'descricao': 'Conjunto de mesa e cadeiras, perfeito para decoração de interiores e espaços compactos.'
-    },
-    {
         'nome': 'Porta lápis',
         'imagem': 'img/produtos/porta_lapis.png',
         'preco': '18.00',
