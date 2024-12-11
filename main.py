@@ -68,6 +68,32 @@ lista_produtos = [
         'descricao': 'Porta lápis moderno para organizar sua mesa de escritório com estilo.'
     },
     {
+        'nome': 'Suporte para USBs',
+        'imagem': 'img/produtos/usb_suporte.png',
+        'preco': '22.00',
+        'favorito': False,
+        'peso': '100g',
+        'material': 'PLA',
+        'densidade': '20%',
+        'dimensoes': '4cm x 12cm x 4cm',
+        'estoque': 10,
+        'tags': ['escritório', 'organização'],
+        'descricao': 'Suporte para USB e cartões de memoria, ideal para mantê-los protegidos.'
+    },
+    {
+        'nome': 'Caixa com Divisorias',
+        'imagem': 'img/produtos/caixa_divisoria.png',
+        'preco': '34.00',
+        'favorito': False,
+        'peso': '220g',
+        'material': 'PLA',
+        'densidade': '20%',
+        'dimensoes': '10cm x 15cm x 6cm',
+        'estoque': 10,
+        'tags': ['organização', 'armazenamento'],
+        'descricao': 'Caixa com divisorias para facilitar a separação de peças pequenas.'
+    },
+    {
         'nome': 'Shuriken',
         'imagem': 'img/produtos/shuriken.png',
         'preco': '10.00',
@@ -255,8 +281,10 @@ def produto_especifico(nome_produto):
 @app.route('/exibir_carrinho')
 def exibir_carrinho():
     recomenda_lista = []
-    for item in range(quantidade_itens_recomendados):
-        recomenda_lista.append(random.choice(lista_produtos))
+    while len(recomenda_lista) < quantidade_itens_recomendados:
+        item = random.choice(lista_produtos)
+        if item not in recomenda_lista:
+            recomenda_lista.append(item)
     return render_template('carrinho.html', recomendacoes=recomenda_lista)
 
 
