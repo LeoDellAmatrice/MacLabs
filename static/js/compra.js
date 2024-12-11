@@ -29,15 +29,22 @@ function criar_item() {
             nome.textContent = produto.nome
             const quant = document.createElement('p')
             quant.textContent = `Quantidade: ${produto.quantidade}`
-            const preco = document.createElement('p')
-            preco.textContent = `Preço unitário R$: ${produto.preco}`
-            const texttotal = document.createElement('p')
-            texttotal.textContent = `Total: R$: ${Number((produto.preco) * (produto.quantidade)).toFixed(2)}`
 
             div_info.appendChild(nome)
             div_info.appendChild(quant)
-            div_info.appendChild(preco)
-            div_info.appendChild(texttotal)
+
+            if (produto.quantidade !== 1){
+                const preco = document.createElement('p')
+                preco.textContent = `Preço unitário R$: ${produto.preco}`
+                const texttotal = document.createElement('p')
+                texttotal.textContent = `Total: R$: ${Number((produto.preco) * (produto.quantidade)).toFixed(2)}`
+                div_info.appendChild(preco)
+                div_info.appendChild(texttotal)
+            } else {
+                const preco = document.createElement('p')
+                preco.textContent = `Total R$: ${produto.preco}`
+                div_info.appendChild(preco)
+            }
 
 
             const list_checkout = document.getElementById('checkout-list')

@@ -60,7 +60,7 @@ function criar_item() {
             const remover_item = document.createElement('button');
             remover_item.classList.add('remover-item');
             remover_item.textContent = 'Remover';
-            remover_item.onclick = remover_do_carrinho.bind(this, produto.nome);
+            remover_item.onclick = remover_do_carrinho.bind(this, produto.nome, produto.cor, produto.material, produto.quantidade);
             form.appendChild(remover_item);
             divacao.appendChild(form);
             divcarrinho_item.appendChild(divacao);
@@ -86,10 +86,14 @@ function criar_item() {
     }
 }
 
-function remover_do_carrinho(nome) {
+function remover_do_carrinho(nome, cor, material, quantidade) {
     for (let i = 0; i < produtosLocalStorage.length; i++) {
-        if (produtosLocalStorage[i].nome === nome) {
-            produtosLocalStorage.splice(i, 1);  // Remove o produto
+        if (produtosLocalStorage[i].nome === nome && produtosLocalStorage[i].cor === cor && produtosLocalStorage[i].material === material) {
+            if (produtosLocalStorage[i].quantidade > 1){
+                produtosLocalStorage[i].quantidade = produtosLocalStorage[i].quantidade - 1;
+            } else {
+                produtosLocalStorage.splice(i, 1);  // Remove o produto
+            }
             window.localStorage.setItem("produtos", JSON.stringify(produtosLocalStorage));
             location.reload();  // Atualiza a página
             break;
