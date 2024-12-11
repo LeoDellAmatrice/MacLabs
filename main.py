@@ -249,7 +249,7 @@ context = (
     f"A missão da MacLabs é 'Incentivar a criatividade e inovação dos nossos clientes, transformando ideias em realidade'."
     f" Nossa visão é 'Ser uma empresa que oferece aos clientes a chance de mudar o mundo'."
     f" Valorizamos 'Criatividade, inovação, ética, sustentabilidade, qualidade e disciplina.'"
-    f"Caso você diga para o usuario visitar uma pagina do site, escreva a tag do HTML <a></a> com href para a pagina que se referencia com todas as letras minusculas(produtos, sobre, exibir_carrinho, #contato)"
+    f"Caso você diga para o usuário visitar uma pagina do site, escreva a tag do HTML <a></a> com href para a pagina que se referencia com todas as letras minusculas(produtos, sobre, exibir_carrinho, #contato)"
     f"Agora, a mensagem do usuário: ")
 
 
