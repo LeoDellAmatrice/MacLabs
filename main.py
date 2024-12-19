@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request
 from google import generativeai as genai
 from flask_caching import Cache
 from dotenv import load_dotenv
-import random
+from random import sample
 import re
 import os
 
@@ -280,11 +280,7 @@ def produto_especifico(nome_produto):
 
 @app.route('/exibir_carrinho')
 def exibir_carrinho():
-    recomenda_lista = []
-    while len(recomenda_lista) < quantidade_itens_recomendados:
-        item = random.choice(lista_produtos)
-        if item not in recomenda_lista:
-            recomenda_lista.append(item)
+    recomenda_lista = sample(lista_produtos, k=quantidade_itens_recomendados)
     return render_template('carrinho.html', recomendacoes=recomenda_lista)
 
 
