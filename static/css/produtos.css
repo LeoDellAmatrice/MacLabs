@@ -171,6 +171,41 @@
     background-color: var(--hover-color);
 }
 
+
+.paginacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px 0 20px;
+    gap: 10px;
+}
+
+.paginacao-numeros {
+    display: flex;
+    gap: 5px;
+}
+
+.paginacao-btn {
+    background: var(--button-bg-color);
+    color: var(--text-color);
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1rem;
+}
+
+.paginacao-btn:hover {
+    background: var(--hover-color);
+}
+
+.paginacao-btn.active {
+    background: var(--hover-color);
+    font-weight: bold;
+    cursor: default;
+}
+
+
 /* Responsividade */
 
 @media (max-width: 480px) {

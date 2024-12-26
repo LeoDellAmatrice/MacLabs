@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, render_template, request
 from google import generativeai as genai
 from flask_caching import Cache
 from dotenv import load_dotenv
-from random import sample
+from random import sample, choice
 import re
 import os
 
@@ -13,6 +13,7 @@ app.config['UPLOAD_FOLDER'] = '/uploads'
 
 # Variaveis #
 quantidade_itens_recomendados: int = 8
+produtos_por_pagina: int = 18  # Número de produtos por página
 
 lista_produtos = [
     {
@@ -265,9 +266,41 @@ def agradecimento():
 
 
 @app.route('/produtos', methods=["GET"])
-@cache.cached(timeout=60)
 def produtos():
-    return render_template('produtos.html', produtos=lista_produtos)
+    pagina = int(request.args.get('pagina', 1))
+    filtro_nome = request.args.get('filtro-nome', '').strip().lower()
+    filtro_tag = request.args.getlist('tag')
+
+    produtos_filtrados = lista_produtos  # Inicialmente, todos os produtos
+    if filtro_nome or filtro_tag:
+        produtos_filtrados = [
+            produto for produto in lista_produtos
+            if (filtro_nome in produto['nome'].lower() if filtro_nome else True) and
+               (any(tag in produto.get('tags', []) for tag in filtro_tag) if filtro_tag else True)
+        ]
+
+    # Paginação
+    total_paginas = (len(produtos_filtrados) + produtos_por_pagina - 1) // produtos_por_pagina
+    inicio = (pagina - 1) * produtos_por_pagina
+    fim = inicio + produtos_por_pagina
+
+    produtos_pagina = produtos_filtrados[inicio:fim]
+
+    # Construir URLs para navegação com os filtros aplicados
+    query_filtros = f"filtro-nome={filtro_nome}&" + "&".join([f"tag={tag}" for tag in filtro_tag])
+    proxima_pagina = f"/produtos?{query_filtros}&pagina={pagina + 1}" if fim < len(produtos_filtrados) else None
+    pagina_anterior = f"/produtos?{query_filtros}&pagina={pagina - 1}" if inicio > 0 else None
+
+    return render_template(
+        'produtos.html',
+        produtos=produtos_pagina,
+        total_paginas=total_paginas,
+        pagina=pagina,
+        proxima_pagina=proxima_pagina,
+        pagina_anterior=pagina_anterior,
+        filtro_nome=filtro_nome,
+        filtro_tag=filtro_tag
+    )
 
 
 @app.route('/produtos/<nome_produto>', methods=["GET"])
@@ -282,32 +315,6 @@ def produto_especifico(nome_produto):
 def exibir_carrinho():
     recomenda_lista = sample(lista_produtos, k=quantidade_itens_recomendados)
     return render_template('carrinho.html', recomendacoes=recomenda_lista)
-
-
-@app.route('/produtos-filtrados')
-def produtos_filtrados():
-    filtro_nome = request.args.get('filtro-nome', '').strip().lower()
-    filtro_tag = request.args.getlist('tag')
-    lista_filtrada = []
-
-    # Quando ambos os filtros estão vazios, exibe todos os produtos
-    if not filtro_nome and not filtro_tag:
-        lista_filtrada = lista_produtos
-    else:
-        # Filtragem de acordo com os parâmetros inseridos
-        for produto in lista_produtos:
-            nome_corresponde = re.search(filtro_nome, produto.get('nome', '').lower()) if filtro_nome else True
-            tag_corresponde = any(tag in filtro_tag for tag in produto.get('tags', []))
-
-            # Adiciona o produto se corresponder aos critérios ativos
-            if nome_corresponde and tag_corresponde:
-                lista_filtrada.append(produto)
-
-    # Renderiza a mensagem se nenhum produto foi encontrado
-    if not lista_filtrada:
-        return render_template('produtos.html', produtos=[], mensagem="Nenhum produto encontrado", tag=filtro_tag, nome=filtro_nome)
-
-    return render_template('produtos.html', produtos=lista_filtrada, tag=filtro_tag, nome=filtro_nome)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -378,4 +385,4 @@ def comprar():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=True)
