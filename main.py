@@ -239,6 +239,9 @@ lista_produtos = [
     }
 ]
 
+# for i in range(199):
+#     lista_produtos.append(choice(lista_produtos))
+
 context = (
     f"Você é o chatbot da MacLabs, especializado em guiar usuários no site e responder perguntas sobre nossos produtos e serviços de impressão 3D."
     f"Caso o usuário queira saber mais sobre a empresa, ofereça uma resposta sucinta e sugira que visite a aba Sobre do site para mais detalhes."

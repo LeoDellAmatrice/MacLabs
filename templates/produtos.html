@@ -78,6 +78,8 @@ MacLabs Produtos
     </div>
 
     <div class="paginacao">
+        <p>Pagina: {{ pagina }} de {{ total_paginas }}</p>
+
         {% if pagina_anterior %}
         <a href="{{ pagina_anterior }}" class="paginacao-btn">&laquo; Anterior</a>
         {% endif %}
