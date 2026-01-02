@@ -3,6 +3,8 @@
 Website developed for **MacLabs** as an interdisciplinary project between  
 **Systems Development** and **Business Administration** courses at **SENAI**.
 
+🌐 Live version: https://maclabs.onrender.com
+
 ---
 
 ## 🎯 Project Overview
